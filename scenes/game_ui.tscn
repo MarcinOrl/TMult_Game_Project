@@ -1,0 +1,114 @@
+[gd_scene load_steps=2 format=3 uid="uid://dax70cycwsk2s"]
+
+[ext_resource type="Script" uid="uid://b6lmt1ymexfqv" path="res://scripts/game_ui.gd" id="1_yubou"]
+
+[node name="GameUI" type="CanvasLayer"]
+script = ExtResource("1_yubou")
+
+[node name="CoinsLabel" type="Label" parent="."]
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -40.0
+offset_bottom = 23.0
+grow_horizontal = 0
+text = "100"
+horizontal_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+text = "100s"
+horizontal_alignment = 1
+
+[node name="SummaryPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 416.0
+offset_top = 143.0
+offset_right = -416.0
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SuccessLabel" type="Label" parent="SummaryPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 49.0
+offset_right = 20.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "SUCCESS"
+
+[node name="SummaryTimeLabel" type="Label" parent="SummaryPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 122.0
+offset_right = 20.0
+offset_bottom = 145.0
+grow_horizontal = 2
+text = "100s"
+horizontal_alignment = 1
+
+[node name="SummaryCoinsLabel" type="Label" parent="SummaryPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -20.0
+offset_top = -19.0
+offset_right = 20.0
+offset_bottom = 4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "100"
+horizontal_alignment = 1
+
+[node name="NextLevelButton" type="Button" parent="SummaryPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -49.0
+offset_top = 30.0
+offset_right = 49.0
+offset_bottom = 61.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "NEXT LEVEL"
+
+[node name="MenuButton" type="Button" parent="SummaryPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -103.0
+offset_right = 64.0
+offset_bottom = -72.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "BACK TO MENU"
+
+[connection signal="pressed" from="SummaryPanel/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="SummaryPanel/MenuButton" to="." method="_on_menu_button_pressed"]
