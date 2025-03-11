@@ -108,7 +108,96 @@ offset_right = 64.0
 offset_bottom = -72.0
 grow_horizontal = 2
 grow_vertical = 0
-text = "BACK TO MENU"
+text = "MAIN MENU"
+
+[node name="GameMenuPanel" type="Panel" parent="."]
+visible = false
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 416.0
+offset_top = 143.0
+offset_right = -416.0
+offset_bottom = -143.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="GameMenuLabel" type="Label" parent="GameMenuPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_top = 49.0
+offset_right = 20.0
+offset_bottom = 72.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 30
+text = "GAME MENU"
+
+[node name="ResumeButton" type="Button" parent="GameMenuPanel"]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -64.0
+offset_top = -35.0
+offset_right = 64.0
+offset_bottom = -4.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "RESUME"
+
+[node name="RestartButton" type="Button" parent="GameMenuPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -172.0
+offset_right = 64.0
+offset_bottom = -141.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "RESTART"
+
+[node name="MenuButton" type="Button" parent="GameMenuPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -129.0
+offset_right = 64.0
+offset_bottom = -98.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "MAIN MENU"
+
+[node name="ExitButton" type="Button" parent="GameMenuPanel"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -64.0
+offset_top = -85.0
+offset_right = 64.0
+offset_bottom = -54.0
+grow_horizontal = 2
+grow_vertical = 0
+text = "EXIT GAME"
 
 [connection signal="pressed" from="SummaryPanel/NextLevelButton" to="." method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="SummaryPanel/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="GameMenuPanel/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="GameMenuPanel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="GameMenuPanel/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="GameMenuPanel/ExitButton" to="." method="_on_exit_button_pressed"]

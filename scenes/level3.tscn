@@ -1,12 +1,13 @@
-[gd_scene load_steps=23 format=4 uid="uid://c0vnnwsdua57n"]
+[gd_scene load_steps=24 format=4 uid="uid://c0vnnwsdua57n"]
 
-[ext_resource type="Script" uid="uid://cpy35ucp36khb" path="res://scripts/game_manager.gd" id="1_b72m1"]
+[ext_resource type="PackedScene" uid="uid://dax70cycwsk2s" path="res://scenes/game_ui.tscn" id="1_5mhml"]
 [ext_resource type="Texture2D" uid="uid://dg2rn68a1o1he" path="res://assets/sprites/world_tileset.png" id="2_5mhml"]
 [ext_resource type="PackedScene" uid="uid://bkrtbfmwvhvfs" path="res://scenes/player.tscn" id="3_rupth"]
 [ext_resource type="PackedScene" uid="uid://bprj8wddgm4tt" path="res://scenes/killzone.tscn" id="4_6qt4k"]
 [ext_resource type="PackedScene" uid="uid://stkfac1l2ycg" path="res://scenes/coin.tscn" id="5_fh4ka"]
 [ext_resource type="PackedScene" uid="uid://xdbnbbng375f" path="res://scenes/platform.tscn" id="6_qewby"]
 [ext_resource type="PackedScene" uid="uid://cyu605wohguuf" path="res://scenes/slime.tscn" id="7_bradm"]
+[ext_resource type="PackedScene" uid="uid://cma0vxv7m5awr" path="res://scenes/finish.tscn" id="8_rupth"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_5mhml")
@@ -329,9 +330,7 @@ _data = {
 
 [node name="Level3" type="Node2D"]
 
-[node name="GameManager" type="Node" parent="."]
-unique_name_in_owner = true
-script = ExtResource("1_b72m1")
+[node name="GameUI" parent="." instance=ExtResource("1_5mhml")]
 
 [node name="Background" type="TileMapLayer" parent="."]
 use_parent_material = true
@@ -446,3 +445,6 @@ autoplay = "move"
 
 [node name="Slime" parent="." instance=ExtResource("7_bradm")]
 position = Vector2(616, 48)
+
+[node name="Finish" parent="." instance=ExtResource("8_rupth")]
+position = Vector2(660, -124)
