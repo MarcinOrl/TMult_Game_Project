@@ -12,7 +12,7 @@ anchor_right = 1.0
 offset_left = -40.0
 offset_bottom = 23.0
 grow_horizontal = 0
-text = "100"
+text = "Coins: 0"
 horizontal_alignment = 1
 
 [node name="TimeLabel" type="Label" parent="."]

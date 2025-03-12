@@ -1,5 +1,7 @@
 extends Area2D
 
+signal coin_pickup
+
 func _on_body_entered(body: Node2D) -> void:
-	GameManager.add_point()
+	coin_pickup.emit()
 	queue_free()
