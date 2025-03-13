@@ -5,6 +5,9 @@ extends Control
 
 func _ready() -> void:
 	level_menu.visible = false
+	for i in range(GameManager.levels.size()):
+		var button = find_child("Level" + str(i + 1))
+		button.disabled = i >= GameManager.unlocked_levels
 
 func _on_play_pressed() -> void:
 	main_menu.visible = false

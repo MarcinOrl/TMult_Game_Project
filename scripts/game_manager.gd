@@ -1,5 +1,6 @@
 extends Node
 
+var unlocked_levels = 1
 var levels = ["res://scenes/level1.tscn", "res://scenes/level2.tscn", "res://scenes/level3.tscn"]
 var current_level_index = 0
 
@@ -10,7 +11,9 @@ signal level_finished
 signal score_updated
 
 func _ready() -> void:
+	load_progress()
 	set_current_level(get_tree().current_scene.scene_file_path)
+	self.connect("level_finished", Callable(self, "unlock_next_level"))
 
 func add_point():
 	score += 1
@@ -32,3 +35,20 @@ func get_score():
 func set_current_level(path: String) -> void:
 	if path in levels:
 		current_level_index = levels.find(path)
+
+func unlock_next_level():
+	if unlocked_levels < levels.size():
+		unlocked_levels += 1
+		save_progress()
+		
+func save_progress():
+	var save_data = {"unlocked_levels": unlocked_levels}
+	var file = FileAccess.open("user://progress.save", FileAccess.WRITE)
+	file.store_string(JSON.stringify(save_data))
+	
+func load_progress():
+	if FileAccess.file_exists("user://progress.save"):
+		var file = FileAccess.open("user://progress.save", FileAccess.READ)
+		var save_data = JSON.parse_string(file.get_as_text())
+		if save_data and "unlocked_levels" in save_data:
+			unlocked_levels = save_data["unlocked_levels"]
