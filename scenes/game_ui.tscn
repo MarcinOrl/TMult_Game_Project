@@ -1,57 +1,88 @@
-[gd_scene load_steps=2 format=3 uid="uid://dax70cycwsk2s"]
+[gd_scene load_steps=4 format=3 uid="uid://dax70cycwsk2s"]
 
 [ext_resource type="Script" uid="uid://b6lmt1ymexfqv" path="res://scripts/game_ui.gd" id="1_yubou"]
+[ext_resource type="FontFile" uid="uid://d0inorwyt76h6" path="res://assets/fonts/PixelOperator8.ttf" id="2_rns2u"]
+[ext_resource type="FontFile" uid="uid://boah4jrhudkrn" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_u001w"]
 
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_yubou")
 
-[node name="CoinsLabel" type="Label" parent="."]
-anchors_preset = 1
-anchor_left = 1.0
-anchor_right = 1.0
-offset_left = -40.0
-offset_bottom = 23.0
-grow_horizontal = 0
-text = "100"
-horizontal_alignment = 1
-
-[node name="TimeLabel" type="Label" parent="."]
-anchors_preset = 5
-anchor_left = 0.5
-anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
-offset_bottom = 23.0
-grow_horizontal = 2
-text = "100s"
-horizontal_alignment = 1
-
-[node name="SummaryPanel" type="Panel" parent="."]
-visible = false
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
-offset_left = 416.0
-offset_top = 143.0
-offset_right = -416.0
-offset_bottom = -143.0
+offset_left = 13.0
+offset_top = 13.0
+offset_right = -13.0
+offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="SuccessLabel" type="Label" parent="SummaryPanel"]
+[node name="CoinsLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -72.0
+offset_bottom = 24.0
+grow_horizontal = 0
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_u001w")
+theme_override_font_sizes/font_size = 24
+text = "100"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="TimeLabel" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_top = 49.0
-offset_right = 20.0
-offset_bottom = 72.0
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 24.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 30
-text = "SUCCESS"
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_u001w")
+theme_override_font_sizes/font_size = 24
+text = "100s"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="SummaryTimeLabel" type="Label" parent="SummaryPanel"]
+[node name="SummaryPanel" type="Panel" parent="Control"]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -142.0
+offset_top = -174.0
+offset_right = 142.0
+offset_bottom = 174.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="SuccessLabel" type="Label" parent="Control/SummaryPanel"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -130.0
+offset_top = 28.0
+offset_right = 130.0
+offset_bottom = 95.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("3_u001w")
+theme_override_font_sizes/font_size = 32
+text = "LEVEL
+COMPLETE"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="SummaryTimeLabel" type="Label" parent="Control/SummaryPanel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -61,10 +92,12 @@ offset_top = 122.0
 offset_right = 20.0
 offset_bottom = 145.0
 grow_horizontal = 2
-text = "100s"
+theme_override_fonts/font = ExtResource("2_rns2u")
+text = "Time: 100"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="SummaryCoinsLabel" type="Label" parent="SummaryPanel"]
+[node name="SummaryCoinsLabel" type="Label" parent="Control/SummaryPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -77,52 +110,59 @@ offset_right = 20.0
 offset_bottom = 4.0
 grow_horizontal = 2
 grow_vertical = 2
-text = "100"
+theme_override_fonts/font = ExtResource("2_rns2u")
+text = "Coins: 10"
 horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="NextLevelButton" type="Button" parent="SummaryPanel"]
+[node name="NextLevelButton" type="Button" parent="Control/SummaryPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -49.0
-offset_top = 30.0
-offset_right = 49.0
-offset_bottom = 61.0
+offset_left = -80.0
+offset_top = 47.0
+offset_right = 80.0
+offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_u001w")
 text = "NEXT LEVEL"
 
-[node name="MenuButton" type="Button" parent="SummaryPanel"]
+[node name="MenuButton" type="Button" parent="Control/SummaryPanel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -64.0
-offset_top = -103.0
-offset_right = 64.0
-offset_bottom = -72.0
+offset_left = -72.0
+offset_top = -84.0
+offset_right = 72.0
+offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_u001w")
 text = "MAIN MENU"
 
-[node name="GameMenuPanel" type="Panel" parent="."]
+[node name="GameMenuPanel" type="Panel" parent="Control"]
 visible = false
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-offset_left = 416.0
-offset_top = 143.0
-offset_right = -416.0
-offset_bottom = -143.0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -141.0
+offset_top = -175.0
+offset_right = 141.0
+offset_bottom = 175.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="GameMenuLabel" type="Label" parent="GameMenuPanel"]
+[node name="GameMenuLabel" type="Label" parent="Control/GameMenuPanel"]
 layout_mode = 1
 anchors_preset = 5
 anchor_left = 0.5
@@ -132,10 +172,13 @@ offset_top = 49.0
 offset_right = 20.0
 offset_bottom = 72.0
 grow_horizontal = 2
-theme_override_font_sizes/font_size = 30
+theme_override_fonts/font = ExtResource("3_u001w")
+theme_override_font_sizes/font_size = 24
 text = "GAME MENU"
+horizontal_alignment = 1
+vertical_alignment = 1
 
-[node name="ResumeButton" type="Button" parent="GameMenuPanel"]
+[node name="ResumeButton" type="Button" parent="Control/GameMenuPanel"]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
@@ -143,14 +186,15 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -64.0
-offset_top = -35.0
+offset_top = -66.0
 offset_right = 64.0
-offset_bottom = -4.0
+offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
+theme_override_fonts/font = ExtResource("3_u001w")
 text = "RESUME"
 
-[node name="RestartButton" type="Button" parent="GameMenuPanel"]
+[node name="RestartButton" type="Button" parent="Control/GameMenuPanel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -158,14 +202,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -64.0
-offset_top = -172.0
+offset_top = -194.0
 offset_right = 64.0
-offset_bottom = -141.0
+offset_bottom = -163.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_u001w")
 text = "RESTART"
 
-[node name="MenuButton" type="Button" parent="GameMenuPanel"]
+[node name="MenuButton" type="Button" parent="Control/GameMenuPanel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -173,14 +218,15 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -64.0
-offset_top = -129.0
+offset_top = -141.0
 offset_right = 64.0
-offset_bottom = -98.0
+offset_bottom = -110.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_u001w")
 text = "MAIN MENU"
 
-[node name="ExitButton" type="Button" parent="GameMenuPanel"]
+[node name="ExitButton" type="Button" parent="Control/GameMenuPanel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -188,16 +234,17 @@ anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
 offset_left = -64.0
-offset_top = -85.0
+offset_top = -89.0
 offset_right = 64.0
-offset_bottom = -54.0
+offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 0
+theme_override_fonts/font = ExtResource("3_u001w")
 text = "EXIT GAME"
 
-[connection signal="pressed" from="SummaryPanel/NextLevelButton" to="." method="_on_next_level_button_pressed"]
-[connection signal="pressed" from="SummaryPanel/MenuButton" to="." method="_on_menu_button_pressed"]
-[connection signal="pressed" from="GameMenuPanel/ResumeButton" to="." method="_on_resume_button_pressed"]
-[connection signal="pressed" from="GameMenuPanel/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="GameMenuPanel/MenuButton" to="." method="_on_menu_button_pressed"]
-[connection signal="pressed" from="GameMenuPanel/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="pressed" from="Control/SummaryPanel/NextLevelButton" to="." method="_on_next_level_button_pressed"]
+[connection signal="pressed" from="Control/SummaryPanel/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Control/GameMenuPanel/ResumeButton" to="." method="_on_resume_button_pressed"]
+[connection signal="pressed" from="Control/GameMenuPanel/RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="pressed" from="Control/GameMenuPanel/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Control/GameMenuPanel/ExitButton" to="." method="_on_exit_button_pressed"]

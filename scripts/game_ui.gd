@@ -1,11 +1,11 @@
 extends CanvasLayer
 
-@onready var game_menu_panel: Panel = $GameMenuPanel
-@onready var summary_panel: Panel = $SummaryPanel
-@onready var summary_time_label: Label = $SummaryPanel/SummaryTimeLabel
-@onready var summary_coins_label: Label = $SummaryPanel/SummaryCoinsLabel
-@onready var coins_label: Label = $CoinsLabel
-@onready var time_label: Label = $TimeLabel
+@onready var game_menu_panel: Panel = $Control/GameMenuPanel
+@onready var summary_panel: Panel = $Control/SummaryPanel
+@onready var summary_time_label: Label = $Control/SummaryPanel/SummaryTimeLabel
+@onready var summary_coins_label: Label = $Control/SummaryPanel/SummaryCoinsLabel
+@onready var coins_label: Label = $Control/CoinsLabel
+@onready var time_label: Label = $Control/TimeLabel
 
 func _ready() -> void:
 	coins_label.text = "Coins: 0"
