@@ -30,7 +30,7 @@ grow_horizontal = 0
 theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_u001w")
 theme_override_font_sizes/font_size = 24
-text = "100"
+text = "Coins: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -58,10 +58,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = -174.0
-offset_right = 142.0
-offset_bottom = 174.0
+offset_left = -166.0
+offset_top = -186.0
+offset_right = 166.0
+offset_bottom = 186.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -129,6 +129,7 @@ offset_bottom = 78.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_u001w")
+theme_override_font_sizes/font_size = 24
 text = "NEXT LEVEL"
 
 [node name="MenuButton" type="Button" parent="Control/SummaryPanel"]
@@ -145,6 +146,7 @@ offset_bottom = -53.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_u001w")
+theme_override_font_sizes/font_size = 24
 text = "MAIN MENU"
 
 [node name="GameMenuPanel" type="Panel" parent="Control"]
@@ -155,10 +157,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -141.0
-offset_top = -175.0
-offset_right = 141.0
-offset_bottom = 175.0
+offset_left = -165.0
+offset_top = -187.0
+offset_right = 165.0
+offset_bottom = 187.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -173,7 +175,7 @@ offset_right = 20.0
 offset_bottom = 72.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("3_u001w")
-theme_override_font_sizes/font_size = 24
+theme_override_font_sizes/font_size = 32
 text = "GAME MENU"
 horizontal_alignment = 1
 vertical_alignment = 1
@@ -192,6 +194,7 @@ offset_bottom = -35.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_u001w")
+theme_override_font_sizes/font_size = 24
 text = "RESUME"
 
 [node name="RestartButton" type="Button" parent="Control/GameMenuPanel"]
@@ -208,6 +211,7 @@ offset_bottom = -163.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_u001w")
+theme_override_font_sizes/font_size = 24
 text = "RESTART"
 
 [node name="MenuButton" type="Button" parent="Control/GameMenuPanel"]
@@ -224,6 +228,7 @@ offset_bottom = -110.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_u001w")
+theme_override_font_sizes/font_size = 24
 text = "MAIN MENU"
 
 [node name="ExitButton" type="Button" parent="Control/GameMenuPanel"]
@@ -240,6 +245,7 @@ offset_bottom = -58.0
 grow_horizontal = 2
 grow_vertical = 0
 theme_override_fonts/font = ExtResource("3_u001w")
+theme_override_font_sizes/font_size = 24
 text = "EXIT GAME"
 
 [connection signal="pressed" from="Control/SummaryPanel/NextLevelButton" to="." method="_on_next_level_button_pressed"]

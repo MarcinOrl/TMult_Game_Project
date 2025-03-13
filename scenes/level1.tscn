@@ -1,5 +1,6 @@
-[gd_scene load_steps=24 format=4 uid="uid://pr7jv41p601i"]
+[gd_scene load_steps=25 format=4 uid="uid://pr7jv41p601i"]
 
+[ext_resource type="PackedScene" uid="uid://btm58pi5hgrxk" path="res://scenes/level_manager.tscn" id="1_conm7"]
 [ext_resource type="PackedScene" uid="uid://dax70cycwsk2s" path="res://scenes/game_ui.tscn" id="1_ejswk"]
 [ext_resource type="Texture2D" uid="uid://dg2rn68a1o1he" path="res://assets/sprites/world_tileset.png" id="2_bbk5w"]
 [ext_resource type="PackedScene" uid="uid://bkrtbfmwvhvfs" path="res://scenes/player.tscn" id="3_conm7"]
@@ -329,6 +330,8 @@ _data = {
 }
 
 [node name="Level1" type="Node2D"]
+
+[node name="LevelManager" parent="." instance=ExtResource("1_conm7")]
 
 [node name="GameUI" parent="." instance=ExtResource("1_ejswk")]
 

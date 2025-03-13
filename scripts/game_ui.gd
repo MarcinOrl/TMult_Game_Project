@@ -7,13 +7,16 @@ extends CanvasLayer
 @onready var coins_label: Label = $Control/CoinsLabel
 @onready var time_label: Label = $Control/TimeLabel
 
+var finish_screen = false
+
 func _ready() -> void:
-	coins_label.text = "Coins: 0"
+	GameManager.connect("level_finished", Callable(self, "show_summary"))
+	GameManager.score_updated.connect(_on_score_updated)
 	GameManager.reset()
 	
 func _process(delta: float) -> void:
-	coins_label.text = "Coins: " + str(GameManager.score)
-	time_label.text = "Time: " + str(int(GameManager.get_elapsed_time())) + "s"
+	if !finish_screen:
+		time_label.text = "Time: " + str(int(GameManager.get_elapsed_time())) + "s"
 
 	if Input.is_action_just_pressed("esc") and not game_menu_panel.visible:
 		show_pause_panel()
@@ -21,6 +24,7 @@ func _process(delta: float) -> void:
 		hide_pause_panel()
 
 func show_summary():
+	finish_screen = true
 	summary_time_label.text = "Time: " + str(GameManager.get_elapsed_time()) + "s"
 	summary_coins_label.text = "Coins: " + str(GameManager.score)
 	summary_panel.show()
@@ -48,6 +52,8 @@ func _on_exit_button_pressed() -> void:
 func show_pause_panel():
 	game_menu_panel.show()
 
-# Ukrycie panelu pauzy
 func hide_pause_panel():
 	game_menu_panel.hide()
+
+func _on_score_updated(new_score):
+	coins_label.text = "Coins: " + str(new_score)

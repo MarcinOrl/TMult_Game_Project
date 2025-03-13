@@ -6,11 +6,15 @@ var current_level_index = 0
 var score = 0
 var start_time = 0
 
+signal level_finished
+signal score_updated
+
 func _ready() -> void:
 	set_current_level(get_tree().current_scene.scene_file_path)
 
 func add_point():
 	score += 1
+	score_updated.emit(score)
 	
 func start_timer():
 	start_time = Time.get_ticks_msec()
