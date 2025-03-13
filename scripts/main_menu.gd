@@ -2,8 +2,12 @@ extends Control
 
 @onready var main_menu: VBoxContainer = $VBoxButtons
 @onready var level_menu: VBoxContainer = $VBoxLevels
+@onready var version_label: Label = $VersionLabel
+
+var version = ProjectSettings.get("application/config/version")
 
 func _ready() -> void:
+	version_label.text = "Version: " + version
 	level_menu.visible = false
 	for i in range(GameManager.levels.size()):
 		var button = find_child("Level" + str(i + 1))
