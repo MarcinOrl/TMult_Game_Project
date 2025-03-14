@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://bkrtbfmwvhvfs"]
+[gd_scene load_steps=29 format=3 uid="uid://bkrtbfmwvhvfs"]
 
 [ext_resource type="Texture2D" uid="uid://bo25nkgh571aa" path="res://assets/sprites/knight.png" id="1_3vyb7"]
 [ext_resource type="Script" uid="uid://bif6vbv82dtlk" path="res://scripts/player.gd" id="1_g2els"]
@@ -171,6 +171,42 @@ animations = [{
 [sub_resource type="CircleShape2D" id="CircleShape2D_fjrip"]
 radius = 5.0
 
+[sub_resource type="Animation" id="Animation_g2els"]
+resource_name = "fade_out"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Color(1, 1, 1, 1), Color(1, 1, 1, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_qhqgy"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:modulate")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(1, 1, 1, 1)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_dqkch"]
+_data = {
+&"RESET": SubResource("Animation_qhqgy"),
+&"fade_out": SubResource("Animation_g2els")
+}
+
 [node name="Player" type="CharacterBody2D"]
 z_index = 5
 collision_layer = 2
@@ -185,3 +221,8 @@ frame_progress = 0.0665815
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
 shape = SubResource("CircleShape2D_fjrip")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_dqkch")
+}
