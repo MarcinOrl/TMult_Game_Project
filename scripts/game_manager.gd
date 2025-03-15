@@ -7,6 +7,8 @@ var current_level_index = 0
 var score = 0
 var start_time = 0
 
+var is_first_time_loading = true
+
 signal level_finished
 signal score_updated
 
@@ -14,6 +16,14 @@ func _ready() -> void:
 	load_progress()
 	set_current_level(get_tree().current_scene.scene_file_path)
 	self.connect("level_finished", Callable(self, "unlock_next_level"))
+
+func get_current_level_name() -> String:
+	var scene_path = get_tree().current_scene.scene_file_path
+	match scene_path:
+		"res://scenes/level1.tscn": return "VERDANT VALE"
+		"res://scenes/level2.tscn": return "DUNE"
+		"res://scenes/level3.tscn": return "FROSTHOLM"
+	return "UNKNOWN LEVEL"
 
 func add_point():
 	score += 1
@@ -52,3 +62,6 @@ func load_progress():
 		var save_data = JSON.parse_string(file.get_as_text())
 		if save_data and "unlocked_levels" in save_data:
 			unlocked_levels = save_data["unlocked_levels"]
+
+func reset_first_time_loading():
+	is_first_time_loading = true

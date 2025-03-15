@@ -343,19 +343,19 @@ grow_vertical = 2
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 24
-text = "VALLEY"
+text = "VERDANT VALE"
 
 [node name="Level2" type="Button" parent="VBoxLevels"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 24
-text = "DESERT"
+text = "DUNE"
 
 [node name="Level3" type="Button" parent="VBoxLevels"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 24
-text = "ICE LAND"
+text = "FROSTHOLM"
 
 [node name="Back" type="Button" parent="VBoxLevels"]
 layout_mode = 2

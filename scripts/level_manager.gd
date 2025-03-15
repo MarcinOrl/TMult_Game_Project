@@ -7,3 +7,8 @@ func _ready() -> void:
 			if coin.has_signal("coin_pickup"):
 				if not coin.is_connected("coin_pickup", Callable(GameManager, "add_point")):
 					coin.connect("coin_pickup", Callable(GameManager, "add_point"))
+
+func _input(event):
+	if event.is_action_pressed("restart"):
+		get_tree().reload_current_scene()
+		Engine.time_scale = 1

@@ -6,6 +6,8 @@ extends CanvasLayer
 @onready var summary_coins_label: Label = $Control/SummaryPanel/SummaryCoinsLabel
 @onready var coins_label: Label = $Control/CoinsLabel
 @onready var time_label: Label = $Control/TimeLabel
+@onready var level_name_label: Label = $Control/LevelNameLabel
+@onready var timer: Timer = $Timer
 
 var finish_screen = false
 
@@ -13,6 +15,12 @@ func _ready() -> void:
 	GameManager.connect("level_finished", Callable(self, "show_summary"))
 	GameManager.score_updated.connect(_on_score_updated)
 	GameManager.reset()
+	
+	if GameManager.is_first_time_loading:
+		level_name_label.text = GameManager.get_current_level_name()
+		level_name_label.show()
+		timer.start()
+		GameManager.is_first_time_loading = false
 	
 func _process(delta: float) -> void:
 	if !finish_screen:
@@ -33,9 +41,11 @@ func hide_summary():
 	summary_panel.hide()
 	
 func _on_menu_button_pressed() -> void:
+	GameManager.reset_first_time_loading()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _on_next_level_button_pressed() -> void:
+	GameManager.reset_first_time_loading()
 	if GameManager.current_level_index + 1 < GameManager.levels.size():
 		GameManager.current_level_index += 1
 		get_tree().change_scene_to_file(GameManager.levels[GameManager.current_level_index])
@@ -57,3 +67,6 @@ func hide_pause_panel():
 
 func _on_score_updated(new_score):
 	coins_label.text = "Coins: " + str(new_score)
+
+func _on_timer_timeout() -> void:
+	$Control/LevelNameLabel.hide()

@@ -19,6 +19,22 @@ offset_bottom = -13.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="TimeLabel" type="Label" parent="Control"]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -48.0
+offset_right = 48.0
+offset_bottom = 24.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_fonts/font = ExtResource("3_u001w")
+theme_override_font_sizes/font_size = 24
+text = "100s"
+horizontal_alignment = 1
+vertical_alignment = 1
+
 [node name="CoinsLabel" type="Label" parent="Control"]
 layout_mode = 1
 anchors_preset = 1
@@ -34,19 +50,23 @@ text = "Coins: 0"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="TimeLabel" type="Label" parent="Control"]
+[node name="LevelNameLabel" type="Label" parent="Control"]
+visible = false
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -48.0
-offset_right = 48.0
-offset_bottom = 24.0
+anchor_bottom = 0.5
+offset_left = -115.5
+offset_top = -81.0
+offset_right = 115.5
+offset_bottom = -57.0
 grow_horizontal = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+grow_vertical = 2
 theme_override_fonts/font = ExtResource("3_u001w")
 theme_override_font_sizes/font_size = 24
-text = "100s"
+text = "LEVEL NAME"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -248,9 +268,13 @@ theme_override_fonts/font = ExtResource("3_u001w")
 theme_override_font_sizes/font_size = 24
 text = "EXIT GAME"
 
+[node name="Timer" type="Timer" parent="."]
+wait_time = 2.5
+
 [connection signal="pressed" from="Control/SummaryPanel/NextLevelButton" to="." method="_on_next_level_button_pressed"]
 [connection signal="pressed" from="Control/SummaryPanel/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Control/GameMenuPanel/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Control/GameMenuPanel/RestartButton" to="." method="_on_restart_button_pressed"]
 [connection signal="pressed" from="Control/GameMenuPanel/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Control/GameMenuPanel/ExitButton" to="." method="_on_exit_button_pressed"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
