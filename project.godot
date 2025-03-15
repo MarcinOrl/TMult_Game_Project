@@ -14,7 +14,6 @@ config/name="TMult_Game_Project"
 config/version="1.0.0-alpha"
 run/main_scene="uid://c31snsinp7oda"
 config/features=PackedStringArray("4.4", "Forward Plus")
-config/icon="res://icon.svg"
 
 [autoload]
 
