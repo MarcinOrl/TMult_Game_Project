@@ -78,10 +78,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -166.0
-offset_top = -186.0
-offset_right = 166.0
-offset_bottom = 186.0
+offset_left = -219.0
+offset_top = -191.0
+offset_right = 219.0
+offset_bottom = 191.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -234,7 +234,7 @@ theme_override_fonts/font = ExtResource("3_u001w")
 theme_override_font_sizes/font_size = 24
 text = "RESTART"
 
-[node name="MenuButton" type="Button" parent="Control/GameMenuPanel"]
+[node name="MainMenuButton" type="Button" parent="Control/GameMenuPanel"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
@@ -275,6 +275,6 @@ wait_time = 2.5
 [connection signal="pressed" from="Control/SummaryPanel/MenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Control/GameMenuPanel/ResumeButton" to="." method="_on_resume_button_pressed"]
 [connection signal="pressed" from="Control/GameMenuPanel/RestartButton" to="." method="_on_restart_button_pressed"]
-[connection signal="pressed" from="Control/GameMenuPanel/MenuButton" to="." method="_on_menu_button_pressed"]
+[connection signal="pressed" from="Control/GameMenuPanel/MainMenuButton" to="." method="_on_menu_button_pressed"]
 [connection signal="pressed" from="Control/GameMenuPanel/ExitButton" to="." method="_on_exit_button_pressed"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

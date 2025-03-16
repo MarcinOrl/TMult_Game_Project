@@ -12,6 +12,7 @@ extends CanvasLayer
 var finish_screen = false
 
 func _ready() -> void:
+	update_translations()
 	GameManager.connect("level_finished", Callable(self, "show_summary"))
 	GameManager.score_updated.connect(_on_score_updated)
 	GameManager.reset()
@@ -24,7 +25,7 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	if !finish_screen:
-		time_label.text = "Time: " + str(int(GameManager.get_elapsed_time())) + "s"
+		time_label.text = tr("time") + ": " + str(int(GameManager.get_elapsed_time())) + "s"
 
 	if Input.is_action_just_pressed("esc") and not game_menu_panel.visible:
 		show_pause_panel()
@@ -33,8 +34,8 @@ func _process(delta: float) -> void:
 
 func show_summary():
 	finish_screen = true
-	summary_time_label.text = "Time: " + str(GameManager.get_elapsed_time()) + "s"
-	summary_coins_label.text = "Coins: " + str(GameManager.score)
+	summary_time_label.text = tr("time") + ": " + str(GameManager.get_elapsed_time()) + "s"
+	summary_coins_label.text = tr("coins") + ": " + str(GameManager.score)
 	summary_panel.show()
 	
 func hide_summary():
@@ -66,7 +67,20 @@ func hide_pause_panel():
 	game_menu_panel.hide()
 
 func _on_score_updated(new_score):
-	coins_label.text = "Coins: " + str(new_score)
+	coins_label.text = tr("coins") + ": " + str(new_score)
 
 func _on_timer_timeout() -> void:
 	$Control/LevelNameLabel.hide()
+
+func update_translations():
+	find_child("TimeLabel").text = tr("time")
+	find_child("CoinsLabel").text = tr("coins") + ": " + str(0) 
+	find_child("SuccessLabel").text = tr("level_complete")
+	find_child("NextLevelButton").text = tr("next_level")
+	find_child("MenuButton").text = tr("menu_title")
+	find_child("GameMenuLabel").text = tr("game_menu")
+	find_child("ResumeButton").text = tr("resume")
+	find_child("RestartButton").text = tr("restart")
+	find_child("MainMenuButton").text = tr("menu_title")
+	find_child("ExitButton").text = tr("exit")
+	

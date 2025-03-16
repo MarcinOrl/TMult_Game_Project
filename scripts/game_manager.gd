@@ -20,9 +20,9 @@ func _ready() -> void:
 func get_current_level_name() -> String:
 	var scene_path = get_tree().current_scene.scene_file_path
 	match scene_path:
-		"res://scenes/level1.tscn": return "VERDANT VALE"
-		"res://scenes/level2.tscn": return "DUNE"
-		"res://scenes/level3.tscn": return "FROSTHOLM"
+		"res://scenes/level1.tscn": return tr("level1")
+		"res://scenes/level2.tscn": return tr("level2")
+		"res://scenes/level3.tscn": return tr("level3")
 	return "UNKNOWN LEVEL"
 
 func add_point():

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=4 uid="uid://c31snsinp7oda"]
+[gd_scene load_steps=10 format=4 uid="uid://c31snsinp7oda"]
 
 [ext_resource type="Script" uid="uid://dnw4sfoaqvigr" path="res://scripts/main_menu.gd" id="1_l6cm7"]
 [ext_resource type="Texture2D" uid="uid://dg2rn68a1o1he" path="res://assets/sprites/world_tileset.png" id="2_ekxnf"]
 [ext_resource type="FontFile" uid="uid://boah4jrhudkrn" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_bqqt6"]
 [ext_resource type="Texture2D" uid="uid://ck3hjs5nvy0jv" path="res://assets/sprites/game_logo.png" id="3_wu84c"]
+[ext_resource type="FontFile" uid="uid://d0inorwyt76h6" path="res://assets/fonts/PixelOperator8.ttf" id="5_8ln24"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wu84c"]
 texture = ExtResource("2_ekxnf")
@@ -306,9 +307,9 @@ anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -104.0
-offset_top = 12.0
+offset_top = 8.0
 offset_right = 105.0
-offset_bottom = 80.0
+offset_bottom = 112.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -318,7 +319,7 @@ theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 24
 text = "PLAY"
 
-[node name="Options" type="Button" parent="VBoxButtons"]
+[node name="Settings" type="Button" parent="VBoxButtons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 24
@@ -338,10 +339,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -113.0
-offset_top = 12.0
-offset_right = 113.0
-offset_bottom = 160.0
+offset_left = -142.0
+offset_top = 4.0
+offset_right = 142.0
+offset_bottom = 152.0
 grow_horizontal = 2
 grow_vertical = 2
 
@@ -397,7 +398,7 @@ anchor_bottom = 0.5
 offset_left = -134.0
 offset_top = 17.0
 offset_right = 134.0
-offset_bottom = 77.0
+offset_bottom = 113.0
 grow_horizontal = 2
 grow_vertical = 2
 alignment = 1
@@ -421,6 +422,7 @@ vertical_alignment = 1
 
 [node name="LanguageOptionButton" type="OptionButton" parent="VBoxSettings/HBoxLanguages"]
 layout_mode = 2
+theme_override_fonts/font = ExtResource("5_8ln24")
 
 [node name="Back" type="Button" parent="VBoxSettings"]
 layout_mode = 2
@@ -431,7 +433,7 @@ theme_override_font_sizes/font_size = 24
 text = "BACK"
 
 [connection signal="pressed" from="VBoxButtons/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxButtons/Options" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="VBoxButtons/Settings" to="." method="_on_options_pressed"]
 [connection signal="pressed" from="VBoxButtons/Exit" to="." method="_on_exit_pressed"]
 [connection signal="pressed" from="VBoxLevels/Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="VBoxLevels/Level2" to="." method="_on_level_2_pressed"]
