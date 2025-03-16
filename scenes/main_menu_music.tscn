@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://c1xs8ykh544g7"]
+
+[ext_resource type="AudioStream" uid="uid://cyst7ga45u0ln" path="res://assets/music/Knight-in-Wonderland-MainMenu.ogg" id="1_eg84y"]
+
+[node name="MainMenuMusic" type="AudioStreamPlayer2D"]
+stream = ExtResource("1_eg84y")
+volume_db = -25.0
+autoplay = true

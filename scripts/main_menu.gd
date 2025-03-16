@@ -1,5 +1,7 @@
 extends Control
 
+@onready var logo: TextureRect = $Logo
+@onready var tween = get_tree().create_tween()
 @onready var main_menu: VBoxContainer = $VBoxButtons
 @onready var level_menu: VBoxContainer = $VBoxLevels
 @onready var version_label: Label = $VersionLabel
@@ -11,6 +13,7 @@ extends Control
 var version = ProjectSettings.get("application/config/version")
 
 func _ready() -> void:
+	#animate_logo()
 	#Settings
 	setup_language_options()
 	load_saved_language()
@@ -93,3 +96,10 @@ func update_menu_texts():
 	find_child("Level2").text = tr("level2")
 	find_child("Level3").text = tr("level3")
 	find_child("Back").text = tr("back")
+
+func animate_logo():
+	tween.tween_property(logo, "rotation_degrees", 5, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(logo, "rotation_degrees", -5, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(logo, "scale", Vector2(1.05, 1.05), 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.tween_property(logo, "scale", Vector2(1.0, 1.0), 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)
+	tween.set_loops()
