@@ -494,7 +494,7 @@ vertical_alignment = 1
 layout_mode = 2
 theme_override_fonts/font = ExtResource("5_8ln24")
 
-[node name="Back" type="Button" parent="VBoxSettings"]
+[node name="BackSettings" type="Button" parent="VBoxSettings"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -511,4 +511,4 @@ text = "BACK"
 [connection signal="pressed" from="VBoxLevels/Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="VBoxSettings/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
 [connection signal="item_selected" from="VBoxSettings/HBoxLanguages/LanguageOptionButton" to="." method="_on_language_option_button_item_selected"]
-[connection signal="pressed" from="VBoxSettings/Back" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="VBoxSettings/BackSettings" to="." method="_on_back_pressed"]

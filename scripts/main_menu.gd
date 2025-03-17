@@ -96,6 +96,7 @@ func update_menu_texts():
 	find_child("Level2").text = tr("level2")
 	find_child("Level3").text = tr("level3")
 	find_child("Back").text = tr("back")
+	find_child("BackSettings").text = tr("back")
 
 func animate_logo():
 	tween.tween_property(logo, "rotation_degrees", 5, 1.5).set_trans(Tween.TRANS_SINE).set_ease(Tween.EASE_IN_OUT)

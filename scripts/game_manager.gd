@@ -14,7 +14,6 @@ signal score_updated
 
 func _ready() -> void:
 	load_progress()
-	set_current_level(get_tree().current_scene.scene_file_path)
 	self.connect("level_finished", Callable(self, "unlock_next_level"))
 
 func get_current_level_name() -> String:
@@ -47,7 +46,8 @@ func set_current_level(path: String) -> void:
 		current_level_index = levels.find(path)
 
 func unlock_next_level():
-	if unlocked_levels < levels.size():
+	set_current_level(get_tree().current_scene.scene_file_path)
+	if unlocked_levels < levels.size() and current_level_index == unlocked_levels - 1:
 		unlocked_levels += 1
 		save_progress()
 		

@@ -450,4 +450,4 @@ autoplay = "move"
 position = Vector2(616, 48)
 
 [node name="Finish" parent="." instance=ExtResource("8_bbk5w")]
-position = Vector2(658, -134)
+position = Vector2(107, -28)
