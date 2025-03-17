@@ -34,8 +34,8 @@ func _process(delta: float) -> void:
 
 func show_summary():
 	finish_screen = true
-	summary_time_label.text = tr("time") + ": " + str(GameManager.get_elapsed_time()) + "s"
-	summary_coins_label.text = tr("coins") + ": " + str(GameManager.score)
+	summary_time_label.text = tr("Time") + ": " + str(GameManager.get_elapsed_time()) + "s"
+	summary_coins_label.text = tr("Coins") + ": " + str(GameManager.score)
 	summary_panel.show()
 	
 func hide_summary():
@@ -67,14 +67,13 @@ func hide_pause_panel():
 	game_menu_panel.hide()
 
 func _on_score_updated(new_score):
-	coins_label.text = tr("coins") + ": " + str(new_score)
+	coins_label.text = str(new_score)
 
 func _on_timer_timeout() -> void:
 	$Control/LevelNameLabel.hide()
 
 func update_translations():
 	find_child("TimeLabel").text = tr("time")
-	find_child("CoinsLabel").text = tr("coins") + ": " + str(0) 
 	find_child("SuccessLabel").text = tr("level_complete")
 	find_child("NextLevelButton").text = tr("next_level")
 	find_child("MenuButton").text = tr("menu_title")

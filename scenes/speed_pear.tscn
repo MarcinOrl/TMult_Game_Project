@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=3 uid="uid://d28mw0dipamf"]
+
+[ext_resource type="Script" uid="uid://scv833a474o6" path="res://scripts/speed_pear.gd" id="1_bt0rk"]
+[ext_resource type="Texture2D" uid="uid://ckrlo5ncrjx0u" path="res://assets/sprites/fruit.png" id="2_1dn2a"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fuhn"]
+size = Vector2(16, 16)
+
+[node name="SpeedPear" type="Area2D"]
+collision_mask = 2
+script = ExtResource("1_bt0rk")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_1dn2a")
+hframes = 4
+vframes = 4
+frame = 5
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_8fuhn")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
