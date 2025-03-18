@@ -7,6 +7,7 @@ func _on_body_entered(body: Node2D) -> void:
 	body.can_move = false
 	body.get_node("CollisionShape2D").queue_free()
 	timer.start()
+	$HurtSound.play()
 
 func _on_timer_timeout() -> void:
 	Engine.time_scale = 1

@@ -2,7 +2,6 @@
 
 [ext_resource type="AudioStream" uid="uid://cyst7ga45u0ln" path="res://assets/music/Knight-in-Wonderland-MainMenu.ogg" id="1_eg84y"]
 
-[node name="MainMenuMusic" type="AudioStreamPlayer2D"]
+[node name="MainMenuMusic" type="AudioStreamPlayer"]
 stream = ExtResource("1_eg84y")
-volume_db = -25.0
-autoplay = true
+bus = &"Music"

@@ -13,7 +13,7 @@ extends Control
 var version = ProjectSettings.get("application/config/version")
 
 func _ready() -> void:
-	#animate_logo()
+	MainMenuMusic.play()
 	#Settings
 	setup_language_options()
 	load_saved_language()

@@ -454,4 +454,4 @@ position = Vector2(616, 48)
 position = Vector2(658, -135)
 
 [node name="SpeedPear" parent="." instance=ExtResource("10_d3jkd")]
-position = Vector2(280, -89)
+position = Vector2(360, -73)
