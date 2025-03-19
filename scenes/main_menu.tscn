@@ -382,72 +382,124 @@ libraries = {
 }
 autoplay = "rotate"
 
-[node name="VBoxButtons" type="VBoxContainer" parent="."]
+[node name="ButtonsControl" type="Control" parent="."]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -104.0
-offset_top = 8.0
-offset_right = 105.0
-offset_bottom = 112.0
+offset_left = -175.0
+offset_top = 9.0
+offset_right = 175.0
+offset_bottom = 309.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Play" type="Button" parent="VBoxButtons"]
+[node name="VBoxButtons" type="VBoxContainer" parent="ButtonsControl"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Play" type="Button" parent="ButtonsControl/VBoxButtons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 24
 text = "PLAY"
 
-[node name="Settings" type="Button" parent="VBoxButtons"]
+[node name="Settings" type="Button" parent="ButtonsControl/VBoxButtons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 24
 text = "OPTIONS"
 
-[node name="Exit" type="Button" parent="VBoxButtons"]
+[node name="Exit" type="Button" parent="ButtonsControl/VBoxButtons"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 24
 text = "EXIT GAME"
 
-[node name="VBoxLevels" type="VBoxContainer" parent="."]
+[node name="VBoxLevels" type="VBoxContainer" parent="ButtonsControl"]
 visible = false
 layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -142.0
-offset_top = 4.0
-offset_right = 142.0
-offset_bottom = 152.0
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Level1" type="Button" parent="VBoxLevels"]
+[node name="Level1" type="Button" parent="ButtonsControl/VBoxLevels"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 24
 text = "VERDANT VALE"
 
-[node name="Level2" type="Button" parent="VBoxLevels"]
+[node name="Level2" type="Button" parent="ButtonsControl/VBoxLevels"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 24
 text = "DUNE"
 
-[node name="Level3" type="Button" parent="VBoxLevels"]
+[node name="Level3" type="Button" parent="ButtonsControl/VBoxLevels"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 24
 text = "FROSTHOLM"
 
-[node name="Back" type="Button" parent="VBoxLevels"]
+[node name="Back" type="Button" parent="ButtonsControl/VBoxLevels"]
+layout_mode = 2
+size_flags_horizontal = 4
+size_flags_vertical = 0
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 24
+text = "BACK"
+
+[node name="VBoxSettings" type="VBoxContainer" parent="ButtonsControl"]
+visible = false
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -166.0
+offset_right = 166.0
+offset_bottom = 132.0
+grow_horizontal = 2
+alignment = 1
+
+[node name="FullscreenCheckBox" type="CheckBox" parent="ButtonsControl/VBoxSettings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 24
+text = "FULLSCREEN"
+
+[node name="HBoxLanguages" type="HBoxContainer" parent="ButtonsControl/VBoxSettings"]
+layout_mode = 2
+
+[node name="LanguageLabel" type="Label" parent="ButtonsControl/VBoxSettings/HBoxLanguages"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_colors/font_color = Color(0.87451, 0.87451, 0.87451, 1)
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 24
+text = "LANGUAGE:"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="LanguageOptionButton" type="OptionButton" parent="ButtonsControl/VBoxSettings/HBoxLanguages"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("5_8ln24")
+
+[node name="ResetProgress" type="Button" parent="ButtonsControl/VBoxSettings"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 24
+text = "RESET PROGRESS"
+
+[node name="BackSettings" type="Button" parent="ButtonsControl/VBoxSettings"]
 layout_mode = 2
 size_flags_horizontal = 4
 size_flags_vertical = 0
@@ -470,58 +522,14 @@ theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
 theme_override_fonts/font = ExtResource("3_bqqt6")
 text = "Version: "
 
-[node name="VBoxSettings" type="VBoxContainer" parent="."]
-visible = false
-layout_mode = 1
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -134.0
-offset_top = 17.0
-offset_right = 134.0
-offset_bottom = 113.0
-grow_horizontal = 2
-grow_vertical = 2
-alignment = 1
-
-[node name="FullscreenCheckBox" type="CheckBox" parent="VBoxSettings"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_bqqt6")
-theme_override_font_sizes/font_size = 24
-text = "FULLSCREEN"
-
-[node name="HBoxLanguages" type="HBoxContainer" parent="VBoxSettings"]
-layout_mode = 2
-
-[node name="LanguageLabel" type="Label" parent="VBoxSettings/HBoxLanguages"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("3_bqqt6")
-theme_override_font_sizes/font_size = 24
-text = "LANGUAGE:"
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="LanguageOptionButton" type="OptionButton" parent="VBoxSettings/HBoxLanguages"]
-layout_mode = 2
-theme_override_fonts/font = ExtResource("5_8ln24")
-
-[node name="BackSettings" type="Button" parent="VBoxSettings"]
-layout_mode = 2
-size_flags_horizontal = 4
-size_flags_vertical = 0
-theme_override_fonts/font = ExtResource("3_bqqt6")
-theme_override_font_sizes/font_size = 24
-text = "BACK"
-
-[connection signal="pressed" from="VBoxButtons/Play" to="." method="_on_play_pressed"]
-[connection signal="pressed" from="VBoxButtons/Settings" to="." method="_on_options_pressed"]
-[connection signal="pressed" from="VBoxButtons/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="VBoxLevels/Level1" to="." method="_on_level_1_pressed"]
-[connection signal="pressed" from="VBoxLevels/Level2" to="." method="_on_level_2_pressed"]
-[connection signal="pressed" from="VBoxLevels/Level3" to="." method="_on_level_3_pressed"]
-[connection signal="pressed" from="VBoxLevels/Back" to="." method="_on_back_pressed"]
-[connection signal="toggled" from="VBoxSettings/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
-[connection signal="item_selected" from="VBoxSettings/HBoxLanguages/LanguageOptionButton" to="." method="_on_language_option_button_item_selected"]
-[connection signal="pressed" from="VBoxSettings/BackSettings" to="." method="_on_back_pressed"]
+[connection signal="pressed" from="ButtonsControl/VBoxButtons/Play" to="." method="_on_play_pressed"]
+[connection signal="pressed" from="ButtonsControl/VBoxButtons/Settings" to="." method="_on_options_pressed"]
+[connection signal="pressed" from="ButtonsControl/VBoxButtons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="ButtonsControl/VBoxLevels/Level1" to="." method="_on_level_1_pressed"]
+[connection signal="pressed" from="ButtonsControl/VBoxLevels/Level2" to="." method="_on_level_2_pressed"]
+[connection signal="pressed" from="ButtonsControl/VBoxLevels/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="ButtonsControl/VBoxLevels/Back" to="." method="_on_back_pressed"]
+[connection signal="toggled" from="ButtonsControl/VBoxSettings/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
+[connection signal="item_selected" from="ButtonsControl/VBoxSettings/HBoxLanguages/LanguageOptionButton" to="." method="_on_language_option_button_item_selected"]
+[connection signal="pressed" from="ButtonsControl/VBoxSettings/ResetProgress" to="." method="_on_reset_progress_pressed"]
+[connection signal="pressed" from="ButtonsControl/VBoxSettings/BackSettings" to="." method="_on_back_pressed"]
