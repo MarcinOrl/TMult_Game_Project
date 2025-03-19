@@ -65,3 +65,8 @@ func load_progress():
 
 func reset_first_time_loading():
 	is_first_time_loading = true
+
+func reset_progress():
+	unlocked_levels = 1
+	save_progress()
+	get_tree().reload_current_scene()

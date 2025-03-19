@@ -2,15 +2,17 @@ extends Control
 
 @onready var logo: TextureRect = $Logo
 @onready var tween = get_tree().create_tween()
-@onready var main_menu: VBoxContainer = $VBoxButtons
-@onready var level_menu: VBoxContainer = $VBoxLevels
+@onready var main_menu: VBoxContainer = $ButtonsControl/VBoxButtons
+@onready var level_menu: VBoxContainer = $ButtonsControl/VBoxLevels
 @onready var version_label: Label = $VersionLabel
-@onready var settings_menu: VBoxContainer = $VBoxSettings
-@onready var fullscreen_checkbox: CheckBox = $VBoxSettings/FullscreenCheckBox
-@onready var language_option_button: OptionButton = $VBoxSettings/HBoxLanguages/LanguageOptionButton
-@onready var language_label: Label = $VBoxSettings/HBoxLanguages/LanguageLabel
+@onready var settings_menu: VBoxContainer = $ButtonsControl/VBoxSettings
+@onready var fullscreen_checkbox: CheckBox = $ButtonsControl/VBoxSettings/FullscreenCheckBox
+@onready var language_option_button: OptionButton = $ButtonsControl/VBoxSettings/HBoxLanguages/LanguageOptionButton
+@onready var language_label: Label = $ButtonsControl/VBoxSettings/HBoxLanguages/LanguageLabel
+@onready var reset_progress: Button = $ButtonsControl/VBoxSettings/ResetProgress
 
 var version = ProjectSettings.get("application/config/version")
+var confirm_reset = false
 
 func _ready() -> void:
 	MainMenuMusic.play()
@@ -65,6 +67,19 @@ func _on_language_option_button_item_selected(index: int) -> void:
 	TranslationServer.set_locale(selected_language)
 	update_menu_texts()
 
+func _on_reset_progress_pressed() -> void:
+	if confirm_reset:
+		GameManager.reset_progress()
+		reset_progress.text = tr("reset_progress")
+		confirm_reset = false
+	else:
+		reset_progress.text = tr("reset_confirm")
+		confirm_reset = true
+		await get_tree().create_timer(3.0).timeout
+		if confirm_reset:
+			reset_progress.text = tr("reset_progress")
+			confirm_reset = false
+		
 func setup_language_options():
 	if language_option_button.get_item_count() == 0:
 		language_option_button.add_item("ENGLISH", 0)
@@ -89,6 +104,7 @@ func apply_custom_styles():
 func update_menu_texts():
 	fullscreen_checkbox.text = tr("fullscreen")
 	language_label.text = tr("language")
+	find_child("ResetProgress").text = tr("reset_progress")
 	find_child("Play").text = tr("play")
 	find_child("Settings").text = tr("settings")
 	find_child("Exit").text = tr("exit")
