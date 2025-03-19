@@ -1,5 +1,7 @@
 extends CanvasLayer
 
+@export var heart_textures: Array[Texture2D]
+
 @onready var game_menu_panel: Panel = $Control/GameMenuPanel
 @onready var summary_panel: Panel = $Control/SummaryPanel
 @onready var summary_time_label: Label = $Control/SummaryPanel/SummaryTimeLabel
@@ -8,14 +10,19 @@ extends CanvasLayer
 @onready var time_label: Label = $Control/TimeLabel
 @onready var level_name_label: Label = $Control/LevelNameLabel
 @onready var timer: Timer = $Timer
+@onready var hearts = $Control/HeartContainer.get_children()
 
 var finish_screen = false
 
 func _ready() -> void:
+	update_hearts(3)
 	update_translations()
 	GameManager.connect("level_finished", Callable(self, "show_summary"))
 	GameManager.score_updated.connect(_on_score_updated)
 	GameManager.reset()
+	
+	var player = get_tree().current_scene.get_node("Player")
+	player.connect("health_changed", Callable(self, "update_hearts"))
 	
 	if GameManager.is_first_time_loading:
 		level_name_label.text = GameManager.get_current_level_name()
@@ -73,6 +80,10 @@ func _on_score_updated(new_score):
 
 func _on_timer_timeout() -> void:
 	$Control/LevelNameLabel.hide()
+
+func update_hearts(current_lives):
+	for i in range(len(hearts)):
+		hearts[i].texture = heart_textures[0] if i < current_lives else heart_textures[1]
 
 func update_translations():
 	find_child("TimeLabel").text = tr("time")

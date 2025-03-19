@@ -1,11 +1,15 @@
 extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
+@onready var timer: Timer = $Timer
+
+signal health_changed(new_lives)
 
 var speed = 100.0
 var jump_velocity = -250.0
-
 var can_move = true
+var max_lives = 3
+var current_lives = max_lives
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -46,3 +50,28 @@ func _physics_process(delta: float) -> void:
 
 func play_fade_out():
 	$AnimationPlayer.play("fade_out")
+
+func take_damage():
+	current_lives -= 1
+	emit_signal("health_changed", current_lives)
+	
+	if current_lives <= 0:
+		die()
+	else:
+		$HurtSound.play()
+		$AnimationPlayer.play("hurt")
+
+func add_live():
+	current_lives += 1
+	emit_signal("health_changed", current_lives)
+
+func die():
+	Engine.time_scale = 0.5
+	can_move = false
+	get_node("CollisionShape2D").queue_free()
+	timer.start()
+	$HurtSound.play()
+
+func _on_timer_timeout() -> void:
+	Engine.time_scale = 1
+	get_tree().reload_current_scene()
