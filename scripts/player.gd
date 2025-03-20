@@ -2,14 +2,18 @@ extends CharacterBody2D
 
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
 @onready var timer: Timer = $Timer
+@onready var shoot_timer: Timer = $ShootTimer
 
 signal health_changed(new_lives)
+
+var fireball_scene = preload("res://scenes/fireball.tscn")
 
 var speed = 100.0
 var jump_velocity = -250.0
 var can_move = true
 var max_lives = 3
 var current_lives = max_lives
+var has_sword = false
 
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
@@ -45,6 +49,9 @@ func _physics_process(delta: float) -> void:
 			velocity.x = direction * speed
 		else:
 			velocity.x = move_toward(velocity.x, 0, speed)
+	
+	if has_sword and Input.is_action_just_pressed("shoot") and shoot_timer.is_stopped():
+		shoot_fire()
 
 	move_and_slide()
 
@@ -75,3 +82,12 @@ func die():
 func _on_timer_timeout() -> void:
 	Engine.time_scale = 1
 	get_tree().reload_current_scene()
+
+func shoot_fire():
+	print("shoot")
+	var fireball = fireball_scene.instantiate()
+	print(fireball)
+	fireball.position = position
+	fireball.direction = Vector2.RIGHT
+	get_tree().current_scene.add_child(fireball)
+	shoot_timer.start()

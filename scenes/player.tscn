@@ -265,6 +265,10 @@ bus = &"SFX"
 wait_time = 0.6
 one_shot = true
 
+[node name="ShootTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
 stream = ExtResource("4_dqkch")
 volume_db = -7.0
