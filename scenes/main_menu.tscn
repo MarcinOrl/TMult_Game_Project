@@ -499,6 +499,42 @@ layout_mode = 2
 size_flags_horizontal = 3
 theme_override_fonts/font = ExtResource("5_8ln24")
 
+[node name="HBoxMusic" type="HBoxContainer" parent="ButtonsControl/VBoxSettings"]
+layout_mode = 2
+
+[node name="MusicLabel" type="Label" parent="ButtonsControl/VBoxSettings/HBoxMusic"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 24
+text = "MUSIC"
+
+[node name="MusicVolume" type="HSlider" parent="ButtonsControl/VBoxSettings/HBoxMusic"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.02
+value = 1.0
+
+[node name="HBoxSFX" type="HBoxContainer" parent="ButtonsControl/VBoxSettings"]
+layout_mode = 2
+
+[node name="SFXLabel" type="Label" parent="ButtonsControl/VBoxSettings/HBoxSFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 24
+text = "SFX"
+
+[node name="SFXVolume" type="HSlider" parent="ButtonsControl/VBoxSettings/HBoxSFX"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+max_value = 1.0
+step = 0.02
+value = 1.0
+
 [node name="ResetProgress" type="Button" parent="ButtonsControl/VBoxSettings"]
 layout_mode = 2
 theme_override_fonts/font = ExtResource("3_bqqt6")
@@ -538,5 +574,7 @@ text = "Version: "
 [connection signal="pressed" from="ButtonsControl/VBoxLevels/Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="ButtonsControl/VBoxSettings/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
 [connection signal="item_selected" from="ButtonsControl/VBoxSettings/HBoxLanguages/LanguageOptionButton" to="." method="_on_language_option_button_item_selected"]
+[connection signal="changed" from="ButtonsControl/VBoxSettings/HBoxMusic/MusicVolume" to="." method="_on_music_volume_changed"]
+[connection signal="changed" from="ButtonsControl/VBoxSettings/HBoxSFX/SFXVolume" to="." method="_on_sfx_volume_changed"]
 [connection signal="pressed" from="ButtonsControl/VBoxSettings/ResetProgress" to="." method="_on_reset_progress_pressed"]
 [connection signal="pressed" from="ButtonsControl/VBoxSettings/BackSettings" to="." method="_on_back_pressed"]
