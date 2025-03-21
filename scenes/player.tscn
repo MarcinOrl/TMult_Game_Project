@@ -266,7 +266,7 @@ wait_time = 0.6
 one_shot = true
 
 [node name="ShootTimer" type="Timer" parent="."]
-wait_time = 2.0
+wait_time = 0.1
 one_shot = true
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="."]

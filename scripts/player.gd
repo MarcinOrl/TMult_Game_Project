@@ -84,10 +84,10 @@ func _on_timer_timeout() -> void:
 	get_tree().reload_current_scene()
 
 func shoot_fire():
-	print("shoot")
 	var fireball = fireball_scene.instantiate()
 	print(fireball)
-	fireball.position = position
-	fireball.direction = Vector2.RIGHT
+	fireball.direction = (get_global_mouse_position() - position).normalized()
+	fireball.position = position + fireball.direction * 10
+	
 	get_tree().current_scene.add_child(fireball)
 	shoot_timer.start()

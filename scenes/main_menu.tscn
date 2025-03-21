@@ -449,6 +449,12 @@ theme_override_fonts/font = ExtResource("3_bqqt6")
 theme_override_font_sizes/font_size = 24
 text = "FROSTHOLM"
 
+[node name="Level4" type="Button" parent="ButtonsControl/VBoxLevels"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("3_bqqt6")
+theme_override_font_sizes/font_size = 24
+text = "NOCTURN KEEP"
+
 [node name="Back" type="Button" parent="ButtonsControl/VBoxLevels"]
 layout_mode = 2
 size_flags_horizontal = 4
@@ -528,6 +534,7 @@ text = "Version: "
 [connection signal="pressed" from="ButtonsControl/VBoxLevels/Level1" to="." method="_on_level_1_pressed"]
 [connection signal="pressed" from="ButtonsControl/VBoxLevels/Level2" to="." method="_on_level_2_pressed"]
 [connection signal="pressed" from="ButtonsControl/VBoxLevels/Level3" to="." method="_on_level_3_pressed"]
+[connection signal="pressed" from="ButtonsControl/VBoxLevels/Level4" to="." method="_on_level_4_pressed"]
 [connection signal="pressed" from="ButtonsControl/VBoxLevels/Back" to="." method="_on_back_pressed"]
 [connection signal="toggled" from="ButtonsControl/VBoxSettings/FullscreenCheckBox" to="." method="_on_fullscreen_check_box_toggled"]
 [connection signal="item_selected" from="ButtonsControl/VBoxSettings/HBoxLanguages/LanguageOptionButton" to="." method="_on_language_option_button_item_selected"]

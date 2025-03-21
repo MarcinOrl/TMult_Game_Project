@@ -58,6 +58,9 @@ func _on_level_2_pressed() -> void:
 func _on_level_3_pressed() -> void:
 	get_tree().change_scene_to_file("res://scenes/level3.tscn")
 
+func _on_level_4_pressed() -> void:
+	get_tree().change_scene_to_file("res://scenes/level4.tscn")
+
 func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:
 	SettingsManager.set_fullscreen(toggled_on)
 
@@ -111,6 +114,7 @@ func update_menu_texts():
 	find_child("Level1").text = tr("level1")
 	find_child("Level2").text = tr("level2")
 	find_child("Level3").text = tr("level3")
+	find_child("Level4").text = tr("level4")
 	find_child("Back").text = tr("back")
 	find_child("BackSettings").text = tr("back")
 

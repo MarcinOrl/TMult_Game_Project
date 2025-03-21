@@ -1,7 +1,7 @@
 extends Node
 
 var unlocked_levels = 1
-var levels = ["res://scenes/level1.tscn", "res://scenes/level2.tscn", "res://scenes/level3.tscn"]
+var levels = ["res://scenes/level1.tscn", "res://scenes/level2.tscn", "res://scenes/level3.tscn", "res://scenes/level4.tscn"]
 var current_level_index = 0
 
 var score = 0
@@ -22,6 +22,7 @@ func get_current_level_name() -> String:
 		"res://scenes/level1.tscn": return tr("level1")
 		"res://scenes/level2.tscn": return tr("level2")
 		"res://scenes/level3.tscn": return tr("level3")
+		"res://scenes/level4.tscn": return tr("level4")
 	return "UNKNOWN LEVEL"
 
 func add_point():
