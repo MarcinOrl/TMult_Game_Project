@@ -298,6 +298,21 @@ expand_mode = 2
 layout_mode = 2
 expand_mode = 2
 
+[node name="BossHealthBar" type="ProgressBar" parent="Control"]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -160.0
+offset_top = -27.0
+offset_right = 160.0
+grow_horizontal = 2
+grow_vertical = 0
+step = 1.0
+value = 100.0
+
 [node name="Timer" type="Timer" parent="."]
 wait_time = 2.5
 

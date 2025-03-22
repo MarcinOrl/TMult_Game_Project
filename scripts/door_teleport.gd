@@ -15,7 +15,7 @@ func _on_animation_player_animation_finished(anim_name: StringName) -> void:
 	player.modulate = Color(1, 1, 1, 1)
 	camera.position_smoothing_enabled = false
 	camera.limit_bottom = -275
-	player.position = Vector2(480, -320)
+	player.position = Vector2(96, -320)
 	await get_tree().create_timer(0.1).timeout
 	camera.position_smoothing_enabled = true
 	player.can_move = true

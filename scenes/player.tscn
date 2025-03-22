@@ -245,8 +245,7 @@ script = ExtResource("1_g2els")
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 position = Vector2(0, -12)
 sprite_frames = SubResource("SpriteFrames_tuyoq")
-animation = &"run"
-frame_progress = 0.0665815
+animation = &"idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(0, -5)
@@ -266,7 +265,7 @@ wait_time = 0.6
 one_shot = true
 
 [node name="ShootTimer" type="Timer" parent="."]
-wait_time = 0.1
+wait_time = 1.5
 one_shot = true
 
 [node name="HurtSound" type="AudioStreamPlayer2D" parent="."]
