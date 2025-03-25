@@ -10,6 +10,7 @@ var start_time = 0
 var is_first_time_loading = true
 
 signal level_finished
+signal game_finished
 signal score_updated
 
 func _ready() -> void:

@@ -5,6 +5,7 @@ extends CharacterBody2D
 @onready var health_bar: ProgressBar = %GameUI.get_node("Control/BossHealthBar")
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var boss_spawner: Area2D = $"../BossSpawner"
+@onready var platform: AnimatableBody2D = $"../Platform"
 
 var health = 100
 var is_dead = false
@@ -15,11 +16,15 @@ var fireball_scene = preload("res://scenes/fireball.tscn")
 func _ready() -> void:
 	self.hide()
 	health_bar.visible = false
+	animated_sprite.modulate = Color(1, 1, 3, 1)
 
 	shoot_timer.start(shoot_cooldown)
 	shoot_timer.connect("timeout", Callable(self, "_on_shoot_timer_timeout"))
 
 	boss_spawner.connect("body_entered", Callable(self, "_on_boss_spawner_body_entered"))
+	
+	platform.hide()
+	platform.get_node("CollisionShape2D").set_deferred("disabled", true)
 
 func _process(delta: float) -> void:
 	if player and !is_dead and is_visible():
@@ -37,10 +42,12 @@ func take_damage():
 	if is_dead:
 		return
 		
-	health -= 10
+	health -= 100
 	update_health_bar()	
 	if health <= 0:
 		die()
+		platform.show()
+		platform.get_node("CollisionShape2D").set_deferred("disabled", false)
 	else:
 		animated_sprite.modulate = Color(1, 0, 0, 1)
 		await get_tree().create_timer(0.3).timeout

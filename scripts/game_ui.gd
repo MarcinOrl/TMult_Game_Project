@@ -6,6 +6,9 @@ extends CanvasLayer
 @onready var summary_panel: Panel = $Control/SummaryPanel
 @onready var summary_time_label: Label = $Control/SummaryPanel/SummaryTimeLabel
 @onready var summary_coins_label: Label = $Control/SummaryPanel/SummaryCoinsLabel
+@onready var game_finish_panel: Panel = $Control/GameFinishPanel
+@onready var finish_time_label: Label = $Control/GameFinishPanel/FinishTimeLabel
+@onready var finish_coins_label: Label = $Control/GameFinishPanel/FinishCoinsLabel
 @onready var coins_label: Label = $Control/CoinsLabel
 @onready var time_label: Label = $Control/TimeLabel
 @onready var level_name_label: Label = $Control/LevelNameLabel
@@ -18,6 +21,7 @@ func _ready() -> void:
 	update_hearts(3)
 	update_translations()
 	GameManager.connect("level_finished", Callable(self, "show_summary"))
+	GameManager.connect("game_finished", Callable(self, "show_finish_summary"))
 	GameManager.score_updated.connect(_on_score_updated)
 	GameManager.reset()
 	
@@ -47,6 +51,12 @@ func show_summary():
 	
 func hide_summary():
 	summary_panel.hide()
+
+func show_finish_summary():
+	finish_screen = true
+	finish_time_label.text = tr("Time") + ": " + str(GameManager.get_elapsed_time()) + "s"
+	finish_coins_label.text = tr("Coins") + ": " + str(GameManager.score)
+	game_finish_panel.show()
 	
 func _on_menu_button_pressed() -> void:
 	GameManager.reset_first_time_loading()
@@ -95,4 +105,5 @@ func update_translations():
 	find_child("RestartButton").text = tr("restart")
 	find_child("MainMenuButton").text = tr("menu_title")
 	find_child("ExitButton").text = tr("exit")
-	
+	find_child("FinishLabel").text = tr("game_complete")
+	find_child("Stats").text = tr("stats")
