@@ -7,6 +7,8 @@ var current_level_index = 0
 var score = 0
 var start_time = 0
 
+var level_stats = {}
+
 var is_first_time_loading = true
 
 signal level_finished
@@ -54,7 +56,10 @@ func unlock_next_level():
 		save_progress()
 		
 func save_progress():
-	var save_data = {"unlocked_levels": unlocked_levels}
+	var save_data = {
+		"unlocked_levels": unlocked_levels, 
+		"level_stats": level_stats
+	}
 	var file = FileAccess.open("user://progress.save", FileAccess.WRITE)
 	file.store_string(JSON.stringify(save_data))
 	
@@ -62,8 +67,11 @@ func load_progress():
 	if FileAccess.file_exists("user://progress.save"):
 		var file = FileAccess.open("user://progress.save", FileAccess.READ)
 		var save_data = JSON.parse_string(file.get_as_text())
-		if save_data and "unlocked_levels" in save_data:
-			unlocked_levels = save_data["unlocked_levels"]
+		if save_data:
+			unlocked_levels = save_data.get("unlocked_levels", 1)
+			level_stats = {}
+			for key in save_data.get("level_stats", {}):
+				level_stats[int(key)] = save_data["level_stats"][key]
 
 func reset_first_time_loading():
 	is_first_time_loading = true
@@ -72,3 +80,21 @@ func reset_progress():
 	unlocked_levels = 1
 	save_progress()
 	get_tree().reload_current_scene()
+
+func save_level_stats(time: float, coins: int):
+	level_stats[current_level_index] = {"time": time, "coins": coins}
+	save_progress()
+
+func get_total_time():
+	var total_time = 0
+	for index in level_stats:
+		total_time += level_stats[index]["time"]
+	print(total_time)
+	return total_time
+
+func get_total_coins():
+	var total_coins = 0
+	for index in level_stats:
+		total_coins += level_stats[index]["coins"]
+	print(total_coins)
+	return int(total_coins)

@@ -10,7 +10,10 @@ level3,FROSTHOLM,MROŹNA KRAINA
 level4,NOCTURN KEEP,NOCNA TWIERDZA
 back,BACK,WSTECZ
 menu_title,MAIN MENU,MENU GŁÓWNE
-time,TIME,CZAS
+time,Time,Czas
+total_time,Total time,Łączny czas
+coins,Coins,Liczba monet
+total_coins,Total coins,Łączna liczba monet
 level_complete,LEVEL COMPLETE, POZIOM\nUKOŃCZONY
 game_complete,GAME COMPLETE,GRA UKOŃCZONA
 stats,STATICTICS,STATYSTYKI
@@ -22,3 +25,4 @@ reset_progress,RESET PROGRESS,ZRESETUJ POSTĘPY
 reset_confirm,ARE YOU SURE?,NA PEWNO?
 music,MUSIC,MUZYKA
 sfx,SFX,EFEKTY
+boss,NOCTURN KNIGHT,RYCERZ NOCY

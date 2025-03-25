@@ -2,7 +2,8 @@ extends CharacterBody2D
 
 @onready var player: CharacterBody2D = %Player
 @onready var animated_sprite: AnimatedSprite2D = $AnimatedSprite2D
-@onready var health_bar: ProgressBar = %GameUI.get_node("Control/BossHealthBar")
+@onready var health_bar: ProgressBar = %GameUI.get_node("Control/BossContainer/BossHealthBar")
+@onready var health_bar_container: VBoxContainer = %GameUI.get_node("Control/BossContainer")
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var boss_spawner: Area2D = $"../BossSpawner"
 @onready var platform: AnimatableBody2D = $"../Platform"
@@ -15,7 +16,7 @@ var fireball_scene = preload("res://scenes/fireball.tscn")
 
 func _ready() -> void:
 	self.hide()
-	health_bar.visible = false
+	health_bar_container.visible = false
 	animated_sprite.modulate = Color(1, 1, 3, 1)
 
 	shoot_timer.start(shoot_cooldown)
@@ -42,12 +43,13 @@ func take_damage():
 	if is_dead:
 		return
 		
-	health -= 100
+	health -= 10
 	update_health_bar()	
 	if health <= 0:
 		die()
 		platform.show()
 		platform.get_node("CollisionShape2D").set_deferred("disabled", false)
+		health_bar_container.hide()
 	else:
 		animated_sprite.modulate = Color(1, 0, 0, 1)
 		await get_tree().create_timer(0.3).timeout
@@ -85,4 +87,4 @@ func _on_boss_spawner_body_entered(body: Node2D) -> void:
 # Funkcja do pokazania bossa
 func show_boss():
 	self.show()
-	health_bar.visible = true 
+	health_bar_container.visible = true 

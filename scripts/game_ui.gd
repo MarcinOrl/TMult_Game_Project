@@ -45,8 +45,14 @@ func _process(delta: float) -> void:
 
 func show_summary():
 	finish_screen = true
-	summary_time_label.text = tr("Time") + ": " + str(GameManager.get_elapsed_time()) + "s"
-	summary_coins_label.text = tr("Coins") + ": " + str(GameManager.score)
+	var level_name = GameManager.get_current_level_name()
+	var elapsed_time = GameManager.get_elapsed_time()
+	var collected_coins = GameManager.get_score()
+	
+	GameManager.save_level_stats(elapsed_time, collected_coins)
+	
+	summary_time_label.text = tr("time") + ": " + str(elapsed_time) + "s"
+	summary_coins_label.text = tr("coins") + ": " + str(collected_coins)
 	summary_panel.show()
 	
 func hide_summary():
@@ -54,8 +60,17 @@ func hide_summary():
 
 func show_finish_summary():
 	finish_screen = true
-	finish_time_label.text = tr("Time") + ": " + str(GameManager.get_elapsed_time()) + "s"
-	finish_coins_label.text = tr("Coins") + ": " + str(GameManager.score)
+	var level_name = GameManager.get_current_level_name()
+	var elapsed_time = GameManager.get_elapsed_time()
+	var collected_coins = GameManager.get_score()
+	
+	GameManager.save_level_stats(elapsed_time, collected_coins)
+	
+	var total_time = GameManager.get_total_time()
+	var total_coins = GameManager.get_total_coins()
+	
+	finish_time_label.text = tr("total_time") + ": " + str(total_time) + "s"
+	finish_coins_label.text = tr("total_coins") + ": " + str(total_coins)
 	game_finish_panel.show()
 	
 func _on_menu_button_pressed() -> void:
@@ -107,3 +122,4 @@ func update_translations():
 	find_child("ExitButton").text = tr("exit")
 	find_child("FinishLabel").text = tr("game_complete")
 	find_child("Stats").text = tr("stats")
+	find_child("BossNameLabel").text = tr("boss")

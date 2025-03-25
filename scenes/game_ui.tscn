@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://dax70cycwsk2s"]
+[gd_scene load_steps=9 format=3 uid="uid://dax70cycwsk2s"]
 
 [ext_resource type="Script" uid="uid://b6lmt1ymexfqv" path="res://scripts/game_ui.gd" id="1_yubou"]
 [ext_resource type="Texture2D" uid="uid://dm12q2budux6p" path="res://assets/sprites/heart_empty.png" id="2_djwj0"]
@@ -6,6 +6,23 @@
 [ext_resource type="Texture2D" uid="uid://dbwg3sc1cqew2" path="res://assets/sprites/heart_full.png" id="3_e0pfi"]
 [ext_resource type="FontFile" uid="uid://boah4jrhudkrn" path="res://assets/fonts/PixelOperator8-Bold.ttf" id="3_u001w"]
 [ext_resource type="Texture2D" uid="uid://dl3l5thc1jx5" path="res://assets/sprites/coin.png" id="3_u2dgd"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_djwj0"]
+bg_color = Color(0, 0, 0, 1)
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
+expand_margin_left = 1.0
+expand_margin_top = 1.0
+expand_margin_right = 1.0
+expand_margin_bottom = 1.0
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_e0pfi"]
+corner_radius_top_left = 15
+corner_radius_top_right = 15
+corner_radius_bottom_right = 15
+corner_radius_bottom_left = 15
 
 [node name="GameUI" type="CanvasLayer"]
 script = ExtResource("1_yubou")
@@ -243,7 +260,7 @@ offset_right = 58.0
 offset_bottom = 190.0
 grow_horizontal = 2
 theme_override_fonts/font = ExtResource("2_rns2u")
-text = "Time: 100"
+text = "Total Time: 100"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -261,7 +278,7 @@ offset_bottom = 53.0064
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_fonts/font = ExtResource("2_rns2u")
-text = "Coins: 10"
+text = "Total Coins: 10"
 horizontal_alignment = 1
 vertical_alignment = 1
 
@@ -282,7 +299,7 @@ theme_override_font_sizes/font_size = 24
 text = "MAIN MENU"
 
 [node name="Sprite2D" type="Sprite2D" parent="Control/GameFinishPanel"]
-position = Vector2(279, 231.006)
+position = Vector2(355, 231.006)
 scale = Vector2(2.2508, 2.2508)
 texture = ExtResource("3_u2dgd")
 hframes = 12
@@ -400,19 +417,34 @@ expand_mode = 2
 layout_mode = 2
 expand_mode = 2
 
-[node name="BossHealthBar" type="ProgressBar" parent="Control"]
-modulate = Color(0.686275, 0.0352941, 0.0196078, 1)
+[node name="BossContainer" type="VBoxContainer" parent="Control"]
 layout_mode = 1
 anchors_preset = 7
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
 anchor_bottom = 1.0
-offset_left = -160.0
-offset_top = -27.0
-offset_right = 160.0
+offset_left = -179.0
+offset_top = -58.0
+offset_right = 179.0
+offset_bottom = -7.0
 grow_horizontal = 2
 grow_vertical = 0
+
+[node name="BossNameLabel" type="Label" parent="Control/BossContainer"]
+layout_mode = 2
+size_flags_horizontal = 4
+theme_override_fonts/font = ExtResource("3_u001w")
+theme_override_font_sizes/font_size = 16
+text = "NOCTURN KNIGHT"
+
+[node name="BossHealthBar" type="ProgressBar" parent="Control/BossContainer"]
+modulate = Color(0.848647, 0.0600146, 0.0352078, 1)
+custom_minimum_size = Vector2(0, 25)
+layout_mode = 2
+size_flags_vertical = 10
+theme_override_styles/background = SubResource("StyleBoxFlat_djwj0")
+theme_override_styles/fill = SubResource("StyleBoxFlat_e0pfi")
 step = 1.0
 value = 100.0
 show_percentage = false
