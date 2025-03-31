@@ -24,6 +24,7 @@ func _ready() -> void:
 	GameManager.connect("game_finished", Callable(self, "show_finish_summary"))
 	GameManager.score_updated.connect(_on_score_updated)
 	GameManager.reset()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 	
 	var player = get_tree().current_scene.get_node("Player")
 	player.connect("health_changed", Callable(self, "update_hearts"))
@@ -44,6 +45,7 @@ func _process(delta: float) -> void:
 		hide_pause_panel()
 
 func show_summary():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	finish_screen = true
 	var level_name = GameManager.get_current_level_name()
 	var elapsed_time = GameManager.get_elapsed_time()
@@ -59,6 +61,7 @@ func hide_summary():
 	summary_panel.hide()
 
 func show_finish_summary():
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 	finish_screen = true
 	var level_name = GameManager.get_current_level_name()
 	var elapsed_time = GameManager.get_elapsed_time()
@@ -96,9 +99,11 @@ func _on_exit_button_pressed() -> void:
 
 func show_pause_panel():
 	game_menu_panel.show()
+	Input.set_mouse_mode(Input.MOUSE_MODE_VISIBLE)
 
 func hide_pause_panel():
 	game_menu_panel.hide()
+	Input.set_mouse_mode(Input.MOUSE_MODE_HIDDEN)
 
 func _on_score_updated(new_score):
 	coins_label.text = str(new_score)

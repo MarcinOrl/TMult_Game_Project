@@ -465,7 +465,7 @@ position = Vector2(553, -320)
 position = Vector2(157, -328)
 
 [node name="FireSword2" parent="." instance=ExtResource("7_vxn4p")]
-position = Vector2(129, -328)
+position = Vector2(129, -327)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -498,6 +498,9 @@ shape = SubResource("RectangleShape2D_xtaj5")
 
 [node name="Platform" parent="." instance=ExtResource("15_8f67t")]
 position = Vector2(464, -354)
+
+[node name="FireSword" parent="." instance=ExtResource("7_vxn4p")]
+position = Vector2(35, -7)
 
 [connection signal="body_entered" from="DoorTeleport" to="DoorTeleport" method="_on_body_entered"]
 [connection signal="animation_finished" from="DoorTeleport/AnimationPlayer" to="DoorTeleport" method="_on_animation_player_animation_finished"]

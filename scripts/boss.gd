@@ -11,6 +11,7 @@ extends CharacterBody2D
 var health = 100
 var is_dead = false
 var speed = 30
+var can_shoot = false
 var shoot_cooldown = 2.0
 var fireball_scene = preload("res://scenes/fireball.tscn")
 
@@ -42,9 +43,9 @@ func move_towards_player(delta: float):
 func take_damage():
 	if is_dead:
 		return
-		
+	
 	health -= 10
-	update_health_bar()	
+	update_health_bar()
 	if health <= 0:
 		die()
 		platform.show()
@@ -64,12 +65,12 @@ func die():
 	animated_sprite.modulate = Color(1, 0, 0, 1)
 	await get_tree().create_timer(0.3).timeout
 	animated_sprite.modulate = Color(1, 1, 3, 1)
-
+	
 func update_health_bar():
 	health_bar.value = health
 
 func _on_shoot_timer_timeout() -> void:
-	if !is_dead:
+	if !is_dead and can_shoot:
 		shoot_fireball()
 
 func shoot_fireball():
@@ -80,11 +81,14 @@ func shoot_fireball():
 	var direction = (player.global_position - global_position).normalized()
 	direction.y = 0
 	fireball.direction = direction
+	
+	fireball.get_node("Sprite2D").modulate = Color(1, 1, 7, 1)
+	fireball.get_node("Sprite2D").flip_h = direction.x < 0
 
 func _on_boss_spawner_body_entered(body: Node2D) -> void:
 	show_boss()
 
-# Funkcja do pokazania bossa
 func show_boss():
 	self.show()
 	health_bar_container.visible = true 
+	can_shoot = true

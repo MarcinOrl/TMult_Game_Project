@@ -86,7 +86,9 @@ func _on_timer_timeout() -> void:
 func shoot_fire():
 	var fireball = fireball_scene.instantiate()
 	fireball.fireball_owner = "Player"
-	fireball.direction = (get_global_mouse_position() - position).normalized()
+
+	var direction = Vector2.RIGHT if animated_sprite.flip_h == false else Vector2.LEFT
+	fireball.direction = direction
 	fireball.position = position + fireball.direction * 10
 	
 	get_tree().current_scene.add_child(fireball)
