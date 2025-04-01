@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="TMult_Game_Project"
-config/version="1.6.0-alpha"
+config/version="1.6.1-alpha"
 run/main_scene="uid://c31snsinp7oda"
 config/features=PackedStringArray("4.4", "Forward Plus")
 config/icon="res://icon.svg"
@@ -21,8 +21,7 @@ config/windows_native_icon="res://game_icon.ico"
 
 GameManager="*res://scripts/game_manager.gd"
 SettingsManager="*res://scripts/settings_manager.gd"
-MainMenuMusic="*res://scenes/main_menu_music.tscn"
-Level1Music="*res://scenes/level_1_music.tscn"
+LevelMusic="*res://scenes/level_music.tscn"
 
 [display]
 

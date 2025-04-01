@@ -1,7 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://6twcrbfsjcia"]
-
-[ext_resource type="AudioStream" uid="uid://dbwspaeqghre8" path="res://assets/music/Level1_Music.ogg" id="1_hvcqi"]
-
-[node name="Level1Music" type="AudioStreamPlayer"]
-stream = ExtResource("1_hvcqi")
-bus = &"Music"

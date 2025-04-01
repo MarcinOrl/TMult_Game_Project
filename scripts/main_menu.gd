@@ -15,12 +15,13 @@ extends Control
 @onready var sfx_volume: HSlider = $ButtonsControl/VBoxSettings/HBoxSFX/SFXVolume
 @onready var music_label: Label = $ButtonsControl/VBoxSettings/HBoxMusic/MusicLabel
 @onready var sfx_label: Label = $ButtonsControl/VBoxSettings/HBoxSFX/SFXLabel
+@onready var main_menu_music: AudioStreamPlayer = $MainMenuMusic
 
 var version = ProjectSettings.get("application/config/version")
 var confirm_reset = false
 
 func _ready() -> void:
-	MainMenuMusic.play()
+	main_menu_music.play()
 	#Settings
 	setup_language_options()
 	load_saved_language()
@@ -63,15 +64,19 @@ func _on_exit_pressed() -> void:
 	get_tree().quit()
 
 func _on_level_1_pressed() -> void:
+	main_menu_music.stop()
 	get_tree().change_scene_to_file("res://scenes/level1.tscn")
 
 func _on_level_2_pressed() -> void:
+	main_menu_music.stop()
 	get_tree().change_scene_to_file("res://scenes/level2.tscn")
 
 func _on_level_3_pressed() -> void:
+	main_menu_music.stop()
 	get_tree().change_scene_to_file("res://scenes/level3.tscn")
 
 func _on_level_4_pressed() -> void:
+	main_menu_music.stop()
 	get_tree().change_scene_to_file("res://scenes/level4.tscn")
 
 func _on_fullscreen_check_box_toggled(toggled_on: bool) -> void:

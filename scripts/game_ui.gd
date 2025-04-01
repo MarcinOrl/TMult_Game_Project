@@ -78,12 +78,12 @@ func show_finish_summary():
 	
 func _on_menu_button_pressed() -> void:
 	GameManager.reset_first_time_loading()
-	Level1Music.stop()
+	LevelMusic.stop_music()
 	get_tree().change_scene_to_file("res://scenes/main_menu.tscn")
 
 func _on_next_level_button_pressed() -> void:
 	GameManager.reset_first_time_loading()
-	Level1Music.stop()
+	LevelMusic.stop_music()
 	if GameManager.current_level_index + 1 < GameManager.levels.size():
 		GameManager.current_level_index += 1
 		get_tree().change_scene_to_file(GameManager.levels[GameManager.current_level_index])

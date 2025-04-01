@@ -1,0 +1,8 @@
+[gd_scene load_steps=2 format=3 uid="uid://djvo3rix2uqpo"]
+
+[ext_resource type="AudioStream" uid="uid://cp7ergt0akdw6" path="res://assets/music/Level4_sounds.ogg" id="1_xf4ih"]
+
+[node name="Level4Music" type="AudioStreamPlayer"]
+stream = ExtResource("1_xf4ih")
+volume_db = 24.0
+bus = &"Music"

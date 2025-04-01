@@ -7,6 +7,8 @@ extends CharacterBody2D
 @onready var shoot_timer: Timer = $ShootTimer
 @onready var boss_spawner: Area2D = $"../BossSpawner"
 @onready var platform: AnimatableBody2D = $"../Platform"
+@onready var level_sounds: AudioStreamPlayer = $"../LevelSounds"
+@onready var boss_music: AudioStreamPlayer = $"../BossMusic"
 
 var health = 100
 var is_dead = false
@@ -16,6 +18,7 @@ var shoot_cooldown = 2.0
 var fireball_scene = preload("res://scenes/fireball.tscn")
 
 func _ready() -> void:
+	level_sounds.play()
 	self.hide()
 	health_bar_container.visible = false
 	animated_sprite.modulate = Color(1, 1, 3, 1)
@@ -87,6 +90,9 @@ func shoot_fireball():
 
 func _on_boss_spawner_body_entered(body: Node2D) -> void:
 	show_boss()
+	level_sounds.stop()
+	boss_music.play()
+	boss_spawner.queue_free()
 
 func show_boss():
 	self.show()
