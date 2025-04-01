@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://pr7jv41p601i"]
+[gd_scene load_steps=26 format=4 uid="uid://pr7jv41p601i"]
 
 [ext_resource type="PackedScene" uid="uid://btm58pi5hgrxk" path="res://scenes/level_manager.tscn" id="1_conm7"]
 [ext_resource type="PackedScene" uid="uid://dax70cycwsk2s" path="res://scenes/game_ui.tscn" id="1_ejswk"]
@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://d28mw0dipamf" path="res://scenes/speed_pear.tscn" id="10_d3jkd"]
 [ext_resource type="PackedScene" uid="uid://dpq1ieh3vfvys" path="res://scenes/spike.tscn" id="11_2ku1j"]
 [ext_resource type="PackedScene" uid="uid://ci5gkhmp3ngkt" path="res://scenes/heart.tscn" id="12_f31uk"]
+[ext_resource type="FontFile" uid="uid://d0inorwyt76h6" path="res://assets/fonts/PixelOperator8.ttf" id="13_f31uk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("2_bbk5w")
@@ -391,10 +392,65 @@ position = Vector2(616, 48)
 position = Vector2(773, -168)
 
 [node name="Heart" parent="." instance=ExtResource("12_f31uk")]
-position = Vector2(696, 25)
+position = Vector2(728, 24)
 
 [node name="Spike2" parent="." instance=ExtResource("11_2ku1j")]
 position = Vector2(104, 10)
 
 [node name="SpeedPear" parent="." instance=ExtResource("10_d3jkd")]
 position = Vector2(888, 119)
+
+[node name="JumpLabel" type="Label" parent="."]
+offset_left = 66.0
+offset_top = -28.0
+offset_right = 316.0
+offset_bottom = -5.0
+scale = Vector2(0.314129, 0.314129)
+theme_override_colors/font_color = Color(0.0980392, 0.313726, 0.752941, 1)
+theme_override_fonts/font = ExtResource("13_f31uk")
+theme_override_font_sizes/font_size = 16
+text = "Press SPACE to jump"
+
+[node name="SlimeLabel" type="Label" parent="."]
+offset_left = 560.0
+offset_top = -8.0
+offset_right = 832.0
+offset_bottom = 15.0
+scale = Vector2(0.314129, 0.314129)
+theme_override_colors/font_color = Color(0.0980392, 0.313726, 0.752941, 1)
+theme_override_fonts/font = ExtResource("13_f31uk")
+theme_override_font_sizes/font_size = 16
+text = "Avoid or smash slimes"
+
+[node name="HeartLabel" type="Label" parent="."]
+offset_left = 675.0
+offset_top = 5.0
+offset_right = 1011.0
+offset_bottom = 75.0
+scale = Vector2(0.314129, 0.314129)
+theme_override_colors/font_color = Color(0.0980392, 0.313726, 0.752941, 1)
+theme_override_fonts/font = ExtResource("13_f31uk")
+theme_override_font_sizes/font_size = 16
+text = "You can restore your heart"
+
+[node name="PortalLabel" type="Label" parent="."]
+offset_left = 751.0
+offset_top = -209.0
+offset_right = 1087.0
+offset_bottom = -139.0
+scale = Vector2(0.314129, 0.314129)
+theme_override_colors/font_color = Color(0.0980392, 0.313726, 0.752941, 1)
+theme_override_fonts/font = ExtResource("13_f31uk")
+theme_override_font_sizes/font_size = 16
+text = "Portal to the next level"
+
+[node name="PowerupLabel" type="Label" parent="."]
+offset_left = 800.0
+offset_top = 101.0
+offset_right = 1066.0
+offset_bottom = 123.0
+scale = Vector2(0.314129, 0.314129)
+theme_override_colors/font_color = Color(0.0784314, 0.596078, 0.862745, 1)
+theme_override_fonts/font = ExtResource("13_f31uk")
+theme_override_font_sizes/font_size = 16
+text = "Pick up jump powerup"

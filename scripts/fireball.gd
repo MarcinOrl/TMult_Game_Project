@@ -1,10 +1,14 @@
 extends Area2D
 
+@onready var fireball_sound: AudioStreamPlayer2D = $FireballSound
+@onready var fireball_explosion_sound: AudioStreamPlayer2D = $FireballExplosionSound
+
 var speed = 120
 var direction = Vector2.RIGHT
 var fireball_owner: String = ""
 
 func _ready() -> void:
+	fireball_sound.play()
 	if fireball_owner == "Boss":
 		set_collision_mask_value(2, true)
 	if fireball_owner == "Player":
@@ -20,6 +24,7 @@ func _on_timer_timeout() -> void:
 	queue_free()
 
 func explode():
+	fireball_explosion_sound.play()
 	$ExplosionEffect.emitting = true
 	await get_tree().create_timer($ExplosionEffect.lifetime + .5).timeout
 	queue_free()

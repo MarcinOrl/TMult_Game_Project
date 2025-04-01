@@ -1,4 +1,4 @@
-[gd_scene load_steps=65 format=3 uid="uid://v8a084leribf"]
+[gd_scene load_steps=66 format=3 uid="uid://v8a084leribf"]
 
 [ext_resource type="Script" uid="uid://bv1tr2wbrourb" path="res://scripts/fireball.gd" id="1_1gl40"]
 [ext_resource type="Texture2D" uid="uid://d3d1n75xthg6r" path="res://assets/sprites/fireball/1.png" id="2_xt2pp"]
@@ -61,6 +61,7 @@
 [ext_resource type="Texture2D" uid="uid://dc0bc0qo0e7a" path="res://assets/sprites/fireball/58.png" id="59_c42ok"]
 [ext_resource type="Texture2D" uid="uid://cigf8avxayycp" path="res://assets/sprites/fireball/59.png" id="60_oyvjr"]
 [ext_resource type="Texture2D" uid="uid://so5rw76pbrh8" path="res://assets/sprites/fireball/60.png" id="61_u4cpx"]
+[ext_resource type="AudioStream" uid="uid://drvbupp4hw7ni" path="res://assets/sounds/fireball.wav" id="62_f3ns1"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_5sfjn"]
 animations = [{
@@ -291,6 +292,17 @@ angle_min = -189.1
 angle_max = 181.8
 scale_amount_min = 0.8
 scale_amount_curve = SubResource("Curve_xt2pp")
+
+[node name="FireballSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("62_f3ns1")
+volume_db = 10.0
+bus = &"SFX"
+
+[node name="FireballExplosionSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("62_f3ns1")
+volume_db = 10.0
+pitch_scale = 0.5
+bus = &"SFX"
 
 [connection signal="area_entered" from="." to="." method="_on_area_entered"]
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

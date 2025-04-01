@@ -10,6 +10,16 @@ func _ready() -> void:
 	
 	if GameManager.is_first_time_loading:
 		LevelMusic.play_music(get_tree().current_scene.scene_file_path)
+	
+	match get_tree().current_scene.scene_file_path:
+		"res://scenes/level1.tscn":
+			get_parent().get_node("JumpLabel").text = tr("jump_tut")
+			get_parent().get_node("SlimeLabel").text = tr("slime_tut")
+			get_parent().get_node("HeartLabel").text = tr("heart_tut")
+			get_parent().get_node("PortalLabel").text = tr("portal_tut")
+			get_parent().get_node("PowerupLabel").text = tr("powerup_tut")
+		"res://scenes/level4.tscn":
+			get_parent().get_node("FireballLabel").text = tr("fireball_tut")
 
 func _input(event):
 	if event.is_action_pressed("restart"):

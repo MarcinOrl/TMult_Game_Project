@@ -47,7 +47,7 @@ func take_damage():
 	if is_dead:
 		return
 	
-	health -= 10
+	health -= 7
 	update_health_bar()
 	if health <= 0:
 		die()

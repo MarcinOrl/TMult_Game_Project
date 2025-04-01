@@ -1,8 +1,9 @@
-[gd_scene load_steps=11 format=3 uid="uid://cyu605wohguuf"]
+[gd_scene load_steps=15 format=3 uid="uid://cyu605wohguuf"]
 
 [ext_resource type="Script" uid="uid://lxekurir5so1" path="res://scripts/slime.gd" id="1_n6pvg"]
 [ext_resource type="Texture2D" uid="uid://df2yqcfd6tce1" path="res://assets/sprites/slime_green.png" id="1_p2gj0"]
 [ext_resource type="Script" uid="uid://cyrurxt4gscih" path="res://scripts/enemy_hitbox.gd" id="3_n6pvg"]
+[ext_resource type="AudioStream" uid="uid://cu24rms2j13wo" path="res://assets/sounds/slime_death.wav" id="4_pjw23"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_pjw23"]
 atlas = ExtResource("1_p2gj0")
@@ -44,7 +45,125 @@ animations = [{
 size = Vector2(3.56077, 0.148673)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_p2gj0"]
-size = Vector2(12, 12)
+size = Vector2(12, 9)
+
+[sub_resource type="Animation" id="Animation_n6pvg"]
+resource_name = "smash"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(1, 1), Vector2(1, 1e-05)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.2),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector2(0, -12), Vector2(0, 0)]
+}
+tracks/2/type = "method"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0.2),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/3/type = "method"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("SlimeKillzone")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/4/type = "method"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("EnemyHitbox")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"values": [{
+"args": [],
+"method": &"queue_free"
+}]
+}
+tracks/5/type = "audio"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("SlimeDeathSound")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"clips": [{
+"end_offset": 0.0,
+"start_offset": 0.0,
+"stream": ExtResource("4_pjw23")
+}],
+"times": PackedFloat32Array(0)
+}
+tracks/5/use_blend = true
+
+[sub_resource type="Animation" id="Animation_pjw23"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("AnimatedSprite2D:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("AnimatedSprite2D:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(0, -12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_2npkn"]
+_data = {
+&"RESET": SubResource("Animation_pjw23"),
+&"smash": SubResource("Animation_n6pvg")
+}
 
 [node name="Slime" type="Node2D"]
 script = ExtResource("1_n6pvg")
@@ -78,8 +197,17 @@ collision_mask = 2
 script = ExtResource("3_n6pvg")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="EnemyHitbox"]
-position = Vector2(0, -6)
+position = Vector2(0, -4.5)
 shape = SubResource("RectangleShape2D_p2gj0")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_2npkn")
+}
+
+[node name="SlimeDeathSound" type="AudioStreamPlayer2D" parent="."]
+volume_db = 24.0
+bus = &"SFX"
 
 [connection signal="body_entered" from="SlimeKillzone" to="." method="_on_slime_killzone_body_entered"]
 [connection signal="body_entered" from="EnemyHitbox" to="EnemyHitbox" method="_on_body_entered"]

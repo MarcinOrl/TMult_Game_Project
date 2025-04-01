@@ -1,4 +1,4 @@
-[gd_scene load_steps=36 format=4 uid="uid://cyqh8nmvm06yd"]
+[gd_scene load_steps=37 format=4 uid="uid://cyqh8nmvm06yd"]
 
 [ext_resource type="PackedScene" uid="uid://btm58pi5hgrxk" path="res://scenes/level_manager.tscn" id="1_5tkub"]
 [ext_resource type="PackedScene" uid="uid://dax70cycwsk2s" path="res://scenes/game_ui.tscn" id="2_jvphm"]
@@ -15,8 +15,9 @@
 [ext_resource type="Script" uid="uid://dym2rxrgiwd3q" path="res://scripts/game_finish.gd" id="13_3n7tn"]
 [ext_resource type="Texture2D" uid="uid://c80uy13fwjmv5" path="res://assets/sprites/portal.png" id="13_g1xgd"]
 [ext_resource type="PackedScene" uid="uid://xdbnbbng375f" path="res://scenes/platform.tscn" id="15_8f67t"]
-[ext_resource type="PackedScene" uid="uid://djvo3rix2uqpo" path="res://scenes/level_4_music.tscn" id="16_2vnbt"]
+[ext_resource type="AudioStream" uid="uid://cp7ergt0akdw6" path="res://assets/music/Level4_sounds.ogg" id="16_ivevn"]
 [ext_resource type="AudioStream" uid="uid://ddumc11hporuk" path="res://assets/music/Boss_Music.ogg" id="17_ekyvo"]
+[ext_resource type="FontFile" uid="uid://d0inorwyt76h6" path="res://assets/fonts/PixelOperator8.ttf" id="17_ivevn"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_lnu2h"]
 texture = ExtResource("3_g1xgd")
@@ -501,11 +502,25 @@ shape = SubResource("RectangleShape2D_xtaj5")
 [node name="Platform" parent="." instance=ExtResource("15_8f67t")]
 position = Vector2(464, -354)
 
-[node name="LevelSounds" parent="." instance=ExtResource("16_2vnbt")]
+[node name="LevelSounds" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("16_ivevn")
+volume_db = 24.0
+bus = &"Music"
 
-[node name="BossMusic" parent="." instance=ExtResource("16_2vnbt")]
+[node name="BossMusic" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("17_ekyvo")
-volume_db = 0.0
+bus = &"Music"
+
+[node name="FireballLabel" type="Label" parent="."]
+offset_left = 89.0
+offset_top = -358.0
+offset_right = 425.0
+offset_bottom = -288.0
+scale = Vector2(0.314129, 0.314129)
+theme_override_colors/font_color = Color(0.858824, 0.643137, 0.388235, 1)
+theme_override_fonts/font = ExtResource("17_ivevn")
+theme_override_font_sizes/font_size = 16
+text = "Press SHIFT to shoot"
 
 [connection signal="body_entered" from="DoorTeleport" to="DoorTeleport" method="_on_body_entered"]
 [connection signal="animation_finished" from="DoorTeleport/AnimationPlayer" to="DoorTeleport" method="_on_animation_player_animation_finished"]

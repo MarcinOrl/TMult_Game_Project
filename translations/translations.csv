@@ -26,3 +26,9 @@ reset_confirm,ARE YOU SURE?,NA PEWNO?
 music,MUSIC,MUZYKA
 sfx,SFX,EFEKTY
 boss,NOCTURN KNIGHT,RYCERZ NOCY
+jump_tut,Press SPACE to jump,Naciśnij SPACJE by skoczyć
+slime_tut,Avoid or smash slimes,Unikaj lub zgniataj slajmy
+heart_tut,You can restore your heart,Możesz odzyskać życie
+portal_tut,Portal to the next level,Portal do następnego poziomu
+powerup_tut,Pick up jump powerup,Podnieś ulepszenie skoku
+fireball_tut,Press SHIFT to shoot,Naciśnij SHIFT by strzelić
